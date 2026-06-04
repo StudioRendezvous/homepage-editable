@@ -1474,7 +1474,7 @@ function StandardBlade_MasterDetailMint() {
                           lineHeight: 1.32,
                           color: 'rgba(255, 255, 255, 0.92)',
                           fontWeight: 800,
-                          margin: '12px 0 14px',
+                          margin: '12px 0 8px',
                           textWrap: 'pretty'
                         }}>
 
