@@ -1150,7 +1150,7 @@ function StandardBlade_MasterDetailMint() {
   const CONNECTOR_HEIGHT = 2;
   const PHOTO_PAD = 16;
   const PHOTO_RADIUS = 12;
-  const PHOTO_HEIGHT = 180;
+  const PHOTO_HEIGHT = 130;
   const CONTENT_PHOTO_GAP = 16;
   const PHOTO_IMAGES = {};
 
