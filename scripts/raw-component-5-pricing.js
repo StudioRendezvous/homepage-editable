@@ -561,7 +561,7 @@ function PricingComparisonTabs() {
             margin: 0,
             textWrap: 'balance',
           }}>
-            See how we compare
+            See how Concierge compares
           </h2>
         </div>
 
