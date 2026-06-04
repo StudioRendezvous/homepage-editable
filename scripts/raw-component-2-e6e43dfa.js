@@ -1150,7 +1150,9 @@ function StandardBlade_MasterDetailMint() {
   const CONNECTOR_HEIGHT = 2;
   const PHOTO_PAD = 16;
   const PHOTO_RADIUS = 12;
-  const PHOTO_HEIGHT = 130;
+  const PHOTO_HEIGHT_ADMIN = 130;
+  const PHOTO_HEIGHT_OTHER = 165;
+  const getPhotoHeight = (id) => id === 'administration' ? PHOTO_HEIGHT_ADMIN : PHOTO_HEIGHT_OTHER;
   const CONTENT_PHOTO_GAP = 16;
   const PHOTO_IMAGES = {};
 
@@ -1538,7 +1540,7 @@ function StandardBlade_MasterDetailMint() {
                   aria-label={`${currentItem.tag} illustration`}
                   style={{
                     width: '100%',
-                    height: PHOTO_HEIGHT,
+                    height: getPhotoHeight(currentItem.id),
                     borderRadius: PHOTO_RADIUS - 4,
                     overflow: 'hidden',
                     background: PHOTO_IMAGES[currentItem.id] ?
