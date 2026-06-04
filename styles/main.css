@@ -520,6 +520,19 @@ button { font-family: inherit; }
   margin-bottom: 0;
 }
 
+/* Complete tier — MORE COMPLIANCE layout placeholder (lorem); label matches group headers above */
+.hi-pricing-tier-card__feature-group--placeholder .hi-pricing-tier-card__feature-label {
+  color: var(--hi-teal-text, #0E938B);
+  opacity: 1;
+}
+
+/* Bullet text matches COMPLIANCE items (navy on light cards); check color is SVG-only in JS */
+.hi-pricing-tier-card--light .hi-pricing-tier-card__feature-group--placeholder .hi-pricing-tier-card__feature-item span {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--hi-navy, #022A4D);
+}
+
 /* Concierge — match light cards' bottom padding; navy panel bleeds into it */
 .hi-pricing-tier-card--dark {
   padding-bottom: 29px !important;

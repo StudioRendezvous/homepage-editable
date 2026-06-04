@@ -74,6 +74,17 @@ const PRICING_PAGE = {
             'ERISA fidelity bond',
           ],
         },
+        {
+          label: 'MORE COMPLIANCE',
+          placeholder: true,
+          items: [
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+            'Sed do eiusmod tempor incididunt ut labore et dolore.',
+            'Ut enim ad minim veniam, quis nostrud ullamco laboris.',
+            'Duis aute irure dolor in reprehenderit in voluptate.',
+            'Excepteur sint occaecat cupidatat non proident sunt.',
+          ],
+        },
       ],
     },
     {
@@ -185,7 +196,9 @@ const PRICING_PAGE = {
   ],
 };
 
-function PricingCheck({ color = HI_BRAND.teal, size = 18 }) {
+const PRICING_CHECK_COLOR = '#0A7A73';
+
+function PricingCheck({ color = PRICING_CHECK_COLOR, size = 18 }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true" style={{ flexShrink: 0, marginTop: 2 }}>
       <circle cx="12" cy="12" r="10" fill={color} opacity={0.15} />
@@ -198,7 +211,7 @@ function PricingTierCard({ tier }) {
   const isDark = tier.dark;
   const text = isDark ? '#fff' : HI_BRAND.navy;
   const muted = isDark ? 'rgba(255,255,255,0.72)' : HI_BRAND.gray[600];
-  const checkColor = isDark ? HI_BRAND.tealLight : HI_BRAND.teal;
+  const checkColor = PRICING_CHECK_COLOR;
   const cardClass = [
     'hi-pricing-tier-card',
     isDark ? 'hi-pricing-tier-card--dark' : 'hi-pricing-tier-card--light',
@@ -325,13 +338,17 @@ function PricingTierCard({ tier }) {
       <div className="hi-pricing-tier-card__features">
         {tier.groups.map((group) => {
           const isPlanSavingsBlock = tier.id === 'concierge' && group.label === 'PLAN SAVINGS';
+          const isPlaceholderGroup = Boolean(group.placeholder);
           const groupText = isPlanSavingsBlock ? HI_BRAND.white : text;
           const groupMuted = isPlanSavingsBlock ? 'rgba(255,255,255,0.72)' : muted;
-          const groupCheckColor = isPlanSavingsBlock ? HI_BRAND.tealLight : checkColor;
-          const groupLabelColor = isPlanSavingsBlock ? HI_BRAND.tealAccent : (isDark ? HI_BRAND.tealAccent : HI_BRAND.tealText);
+          const groupCheckColor = checkColor;
+          const groupLabelColor = isPlanSavingsBlock
+            ? HI_BRAND.tealAccent
+            : (isDark ? HI_BRAND.tealAccent : HI_BRAND.tealText);
           const groupClass = [
             'hi-pricing-tier-card__feature-group',
             isPlanSavingsBlock ? 'hi-pricing-tier-card__feature-group--plan-savings' : '',
+            isPlaceholderGroup ? 'hi-pricing-tier-card__feature-group--placeholder' : '',
           ].filter(Boolean).join(' ');
 
           return (
