@@ -1155,7 +1155,7 @@ function StandardBlade_MasterDetailMint() {
   const CONTENT_PHOTO_GAP = 16;
   const PHOTO_IMAGES = {
     administration: 'assets/images/image_test_01.png',
-    compliance: 'assets/images/image_test_02.png',
+    compliance: 'assets/images/image_test_02.png?v=5',
     investments: 'assets/images/image_test_04.png'
   };
 
