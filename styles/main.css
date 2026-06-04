@@ -182,7 +182,7 @@ button { font-family: inherit; }
   z-index: 1;
 }
 
-/* Hero awards WebM (VP9 alpha) — transparent matte; gradient from .hi-header-shell */
+/* Hero awards — WebM (VP9 alpha) in Chrome/Firefox/Edge; PNG in Safari (no WebM alpha) */
 .hi-hero-awards-stage {
   position: relative;
   width: 100%;
@@ -196,12 +196,13 @@ button { font-family: inherit; }
   background: transparent;
 }
 
-/* Blend stacking context for Safari + GitHub Pages screen matte fix */
+/* Chromium on github.io: VP9 alpha matte is black — screen blend on video only */
 .hi-hero-awards-media--blend {
   isolation: isolate;
 }
 
-.hi-hero-awards-video {
+.hi-hero-awards-video,
+.hi-hero-awards-img {
   display: block;
   width: 100%;
   max-width: 360px;
@@ -213,14 +214,13 @@ button { font-family: inherit; }
   vertical-align: top;
 }
 
-/* VP9 alpha matte renders black in Safari and Chromium on github.io — screen removes it */
 .hi-hero-awards-video--screen-blend {
   mix-blend-mode: screen;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
 }
 
-/* Legacy class from e2f08c2 — keep for cached HTML/JS; same rules as --screen-blend */
+/* Legacy class from e2f08c2 */
 .hi-hero-awards-video--gh-pages {
   mix-blend-mode: screen;
   -webkit-transform: translateZ(0);

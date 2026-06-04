@@ -17,7 +17,16 @@ function CombinedLandingPage() {
     const ua = navigator.userAgent;
     return /Safari/i.test(ua) && !/Chrome|Chromium|CriOS|Edg|OPR|FxiOS/i.test(ua);
   })();
-  const needsScreenBlend = isGitHubPages || isSafari;
+  const needsScreenBlend = isGitHubPages && !isSafari;
+  const awardsMediaStyle = {
+    display: 'block',
+    width: '100%',
+    maxWidth: 360,
+    height: 'auto',
+    objectFit: 'contain',
+    background: 'transparent',
+    backgroundColor: 'transparent',
+  };
 
   // ─── Data ──────────────────────────────────────────────────────────────────
   const testimonials = [
@@ -138,24 +147,25 @@ function CombinedLandingPage() {
                 style={{ width: '100%', maxWidth: 360 }}
               >
                 <div className={'hi-hero-awards-media' + (needsScreenBlend ? ' hi-hero-awards-media--blend' : '')} style={{ width: '100%', maxWidth: 360 }}>
-                  <video
-                    className={'hi-hero-awards-video' + (needsScreenBlend ? ' hi-hero-awards-video--screen-blend' : '')}
-                    src={window.__resources.awardsImg}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    aria-label="Awards"
-                    style={{
-                      display: 'block',
-                      width: '100%',
-                      maxWidth: 360,
-                      height: 'auto',
-                      objectFit: 'contain',
-                      background: 'transparent',
-                      backgroundColor: 'transparent',
-                    }}
-                  />
+                  {isSafari ? (
+                    <img
+                      className="hi-hero-awards-img"
+                      src={window.__resources.awardsImg}
+                      alt="Awards"
+                      style={awardsMediaStyle}
+                    />
+                  ) : (
+                    <video
+                      className={'hi-hero-awards-video' + (needsScreenBlend ? ' hi-hero-awards-video--screen-blend' : '')}
+                      src={window.__resources.awardsVideo}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      aria-label="Awards"
+                      style={awardsMediaStyle}
+                    />
+                  )}
                 </div>
               </div>
               <p style={{
