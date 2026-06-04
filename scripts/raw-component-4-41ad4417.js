@@ -127,16 +127,28 @@ function CombinedLandingPage() {
           {/* Right: badge wall */}
           <div style={{ flexShrink: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-end', gap: 16, width: 'min(380px, 100%)', maxWidth: '100%' }}>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, width: '100%' }}>
-              <div className="hi-hero-awards-media">
-                <video
-                  className="hi-hero-awards-video"
-                  src={window.__resources.awardsImg}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  aria-label="Awards"
-                />
+              <div
+                className="hi-hero-awards-stage"
+                style={{
+                  backgroundColor: '#fff',
+                  backgroundImage: 'radial-gradient(ellipse 100% 95% at 100% 0%, #FFCF67 0%, rgba(255, 207, 103, 0.5) 38%, rgba(255, 207, 103, 0.18) 56%, transparent 72%)',
+                  backgroundRepeat: 'no-repeat',
+                  backgroundSize: 'min(860px, 58vw) 100%',
+                  backgroundPosition: 'right top',
+                }}
+              >
+                <div className="hi-hero-awards-media">
+                  <video
+                    className="hi-hero-awards-video"
+                    src={window.__resources.awardsImg}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    aria-label="Awards"
+                    style={{ display: 'block', width: '100%', height: 'auto', objectFit: 'contain', opacity: 0.95, background: 'transparent' }}
+                  />
+                </div>
               </div>
               <p style={{
                 fontFamily: 'Lora, Georgia, serif',
