@@ -129,15 +129,9 @@ function CombinedLandingPage() {
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, width: '100%' }}>
               <div
                 className="hi-hero-awards-stage"
-                style={{
-                  backgroundColor: '#fff',
-                  backgroundImage: 'radial-gradient(ellipse 100% 95% at 100% 0%, #FFCF67 0%, rgba(255, 207, 103, 0.5) 38%, rgba(255, 207, 103, 0.18) 56%, transparent 72%)',
-                  backgroundRepeat: 'no-repeat',
-                  backgroundSize: 'min(860px, 58vw) 100%',
-                  backgroundPosition: 'right top',
-                }}
+                style={{ width: '100%', maxWidth: 360, background: '#fff' }}
               >
-                <div className="hi-hero-awards-media">
+                <div className="hi-hero-awards-media" style={{ width: '100%', maxWidth: 360 }}>
                   <video
                     className="hi-hero-awards-video"
                     src={window.__resources.awardsImg}
@@ -146,7 +140,7 @@ function CombinedLandingPage() {
                     muted
                     playsInline
                     aria-label="Awards"
-                    style={{ display: 'block', width: '100%', height: 'auto', objectFit: 'contain', opacity: 0.95, background: 'transparent' }}
+                    style={{ display: 'block', width: '100%', maxWidth: 360, height: 'auto', objectFit: 'contain', background: '#fff' }}
                   />
                 </div>
               </div>
