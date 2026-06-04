@@ -1148,10 +1148,9 @@ function StandardBlade_MasterDetailMint() {
   const CONNECTOR_GAP = 32;
   const DETAIL_HEIGHT = 640;
   const CONNECTOR_HEIGHT = 2;
-  const PHOTO_PAD = 16;
   const PHOTO_RADIUS = 12;
-  const PHOTO_HEIGHT_ADMIN = 130;
-  const PHOTO_HEIGHT_OTHER = 180;
+  const PHOTO_HEIGHT_ADMIN = 162;
+  const PHOTO_HEIGHT_OTHER = 212;
   const getPhotoHeight = (id) => id === 'administration' ? PHOTO_HEIGHT_ADMIN : PHOTO_HEIGHT_OTHER;
   const CONTENT_PHOTO_GAP = 16;
   const PHOTO_IMAGES = {};
@@ -1527,7 +1526,6 @@ function StandardBlade_MasterDetailMint() {
                   width: '100%',
                   marginTop: 'auto',
                   flexShrink: 0,
-                  padding: PHOTO_PAD,
                   borderRadius: PHOTO_RADIUS,
                   border: '1px solid rgba(255, 255, 255, 0.18)',
                   background: 'rgba(255, 255, 255, 0.05)',

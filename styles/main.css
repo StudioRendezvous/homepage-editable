@@ -510,10 +510,35 @@ button { font-family: inherit; }
 .hi-pricing-tier-card--dark .hi-pricing-tier-card__features {
   display: grid;
   grid-template-rows: auto auto 1fr;
+  position: relative;
+}
+
+/* Concierge — feather navy panel upward from PLAN SAVINGS for longer, softer fade */
+.hi-pricing-tier-card--dark .hi-pricing-tier-card__features::before {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  left: -28px;
+  right: -28px;
+  bottom: -46px;
+  top: 16%;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(2, 42, 77, 0.38) 30%,
+    var(--hi-navy, #022A4D) 100%
+  );
+  border-radius: 0 0 12px 12px;
+  pointer-events: none;
+}
+
+.hi-pricing-tier-card--dark .hi-pricing-tier-card__feature-group {
+  position: relative;
+  z-index: 1;
 }
 
 .hi-pricing-tier-card__feature-group {
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 
 .hi-pricing-tier-card__feature-group:last-child {
@@ -526,10 +551,10 @@ button { font-family: inherit; }
   opacity: 1;
 }
 
-/* Bullet text matches COMPLIANCE items (navy on light cards); check color is SVG-only in JS */
+/* Light tiers: check SVG #0A7A73 (PRICING_CHECK_COLOR). Concierge dark card: #8FD5D1 (HI_BRAND.tealLight) in JS */
 .hi-pricing-tier-card--light .hi-pricing-tier-card__feature-group--placeholder .hi-pricing-tier-card__feature-item span {
   font-size: 14px;
-  line-height: 1.5;
+  line-height: 1.4;
   color: var(--hi-navy, #022A4D);
 }
 
@@ -542,15 +567,31 @@ button { font-family: inherit; }
 .hi-pricing-tier-card--dark .hi-pricing-tier-card__feature-group--plan-savings {
   align-self: stretch;
   min-height: 0;
-  margin-top: 26px;
+  margin-top: 14px;
   /* Cancel card bottom padding + row-8 slack so navy flush to card bottom */
   margin-bottom: -46px;
   margin-left: -28px;
   margin-right: -28px;
   width: calc(100% + 56px);
-  padding: 20px 28px 29px;
-  background: var(--hi-navy-dark, #011E38);
+  padding: 16px 28px 29px;
+  background: linear-gradient(
+    180deg,
+    var(--hi-navy, #022A4D) 0%,
+    #012040 48%,
+    var(--hi-navy-dark, #011E38) 85%
+  );
   border-radius: 0 0 12px 12px;
+}
+
+/* Rule inset to match content padding (28px), not full-bleed panel edges */
+.hi-pricing-tier-card--dark .hi-pricing-tier-card__feature-group--plan-savings::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 28px;
+  right: 28px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .hi-pricing-tier-card--dark .hi-pricing-tier-card__feature-group:has(+ .hi-pricing-tier-card__feature-group--plan-savings) {
@@ -558,7 +599,12 @@ button { font-family: inherit; }
 }
 
 .hi-pricing-tier-card--dark .hi-pricing-tier-card__feature-group:not(.hi-pricing-tier-card__feature-group--plan-savings) {
-  margin-bottom: 9px;
+  margin-bottom: 8px;
+}
+
+/* Concierge — COMPLIANCE (and any non–plan-savings follow-on group): match 16px inter-group rhythm */
+.hi-pricing-tier-card--dark .hi-pricing-tier-card__feature-group + .hi-pricing-tier-card__feature-group:not(.hi-pricing-tier-card__feature-group--plan-savings) {
+  margin-top: 8px;
 }
 
 .hi-pricing-tier-card--dark .hi-pricing-tier-card__highlight {
@@ -566,11 +612,17 @@ button { font-family: inherit; }
 }
 
 .hi-pricing-tier-card--dark .hi-pricing-tier-card__feature-group--plan-savings .hi-pricing-tier-card__feature-list {
-  gap: 4px;
+  gap: 3px;
+}
+
+/* Concierge PLAN SAVINGS — Audit Relief (second rich item) */
+.hi-pricing-tier-card--dark .hi-pricing-tier-card__feature-group--plan-savings .hi-pricing-tier-card__feature-item--audit-relief {
+  margin-top: 4px;
+  padding: 5px 0 3px;
 }
 
 .hi-pricing-tier-card__feature-label {
-  margin: 0 0 8px;
+  margin: 0 0 7px;
 }
 
 .hi-pricing-tier-card__feature-list {
@@ -581,7 +633,7 @@ button { font-family: inherit; }
   padding-inline-start: 0;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 4px;
 }
 
 .hi-pricing-tier-card__feature-item {

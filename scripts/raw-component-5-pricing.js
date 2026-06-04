@@ -197,6 +197,7 @@ const PRICING_PAGE = {
 };
 
 const PRICING_CHECK_COLOR = '#0A7A73';
+const PRICING_CHECK_COLOR_DARK = HI_BRAND.tealLight; // #8FD5D1 — Concierge navy / plan-savings
 
 function PricingCheck({ color = PRICING_CHECK_COLOR, size = 18 }) {
   return (
@@ -211,7 +212,7 @@ function PricingTierCard({ tier }) {
   const isDark = tier.dark;
   const text = isDark ? '#fff' : HI_BRAND.navy;
   const muted = isDark ? 'rgba(255,255,255,0.72)' : HI_BRAND.gray[600];
-  const checkColor = PRICING_CHECK_COLOR;
+  const checkColor = isDark ? PRICING_CHECK_COLOR_DARK : PRICING_CHECK_COLOR;
   const cardClass = [
     'hi-pricing-tier-card',
     isDark ? 'hi-pricing-tier-card--dark' : 'hi-pricing-tier-card--light',
@@ -366,13 +367,17 @@ function PricingTierCard({ tier }) {
               {group.items.map((item) => {
                 const isRich = typeof item === 'object';
                 const key = isRich ? item.title : item;
+                const itemClass = [
+                  'hi-pricing-tier-card__feature-item',
+                  isRich && item.title === 'Audit Relief' ? 'hi-pricing-tier-card__feature-item--audit-relief' : '',
+                ].filter(Boolean).join(' ');
                 return (
-                  <div key={key} className="hi-pricing-tier-card__feature-item" role="listitem">
+                  <div key={key} className={itemClass} role="listitem">
                     <PricingCheck color={groupCheckColor} />
                     <div>
                       {isRich ? (
                         <>
-                          <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 8, marginBottom: 4 }}>
+                          <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 8, marginBottom: 3 }}>
                             <span style={{ fontSize: 14, fontWeight: 600, color: groupText }}>{item.title}</span>
                             {item.badge && (
                               <span style={{
@@ -389,10 +394,10 @@ function PricingTierCard({ tier }) {
                               </span>
                             )}
                           </div>
-                          <p style={{ fontSize: 13, color: groupMuted, margin: 0, lineHeight: 1.55 }}>{item.detail}</p>
+                          <p style={{ fontSize: 13, color: groupMuted, margin: 0, lineHeight: 1.45 }}>{item.detail}</p>
                         </>
                       ) : (
-                        <span style={{ fontSize: 14, color: groupText, lineHeight: 1.5 }}>{item}</span>
+                        <span style={{ fontSize: 14, color: groupText, lineHeight: 1.4 }}>{item}</span>
                       )}
                     </div>
                   </div>
