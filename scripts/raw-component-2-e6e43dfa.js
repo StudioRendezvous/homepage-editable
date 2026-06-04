@@ -1154,7 +1154,9 @@ function StandardBlade_MasterDetailMint() {
   const getPhotoHeight = (id) => id === 'administration' ? PHOTO_HEIGHT_ADMIN : PHOTO_HEIGHT_OTHER;
   const CONTENT_PHOTO_GAP = 16;
   const PHOTO_IMAGES = {
-    administration: 'assets/images/image_test_01.png'
+    administration: 'assets/images/image_test_01.png',
+    compliance: 'assets/images/image_test_02.png',
+    investments: 'assets/images/image_test_04.png'
   };
 
   const layoutRef = React.useRef(null);
@@ -1529,7 +1531,7 @@ function StandardBlade_MasterDetailMint() {
                   marginTop: 'auto',
                   flexShrink: 0,
                   borderRadius: PHOTO_RADIUS,
-                  border: '1px solid rgba(255, 255, 255, 0.18)',
+                  border: 'none',
                   background: 'rgba(255, 255, 255, 0.05)',
                   boxSizing: 'border-box',
                   boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.06)'
@@ -1546,7 +1548,7 @@ function StandardBlade_MasterDetailMint() {
                     background: PHOTO_IMAGES[currentItem.id] ?
                       'rgba(2, 42, 77, 0.35)' :
                       'linear-gradient(145deg, rgba(143, 213, 209, 0.22) 0%, rgba(74, 118, 164, 0.32) 52%, rgba(2, 42, 77, 0.42) 100%)',
-                    border: '1px dashed rgba(255, 255, 255, 0.14)',
+                    border: 'none',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center'
