@@ -199,7 +199,7 @@ function CombinedLandingPage() {
           ═══════════════════════════════════════════════════════════ */}
       <section style={{
         background: HI_BRAND.gray[50],
-        padding: '96px 80px 112px',
+        padding: '72px 80px 84px',
         fontFamily: 'Manrope, sans-serif',
         position: 'relative',
         overflow: 'hidden',
@@ -317,7 +317,7 @@ function CombinedLandingPage() {
           ═══════════════════════════════════════════════════════════ */}
       <section style={{
         background: '#fff',
-        padding: '88px 80px',
+        padding: '64px 80px 72px',
         position: 'relative',
         overflow: 'hidden',
       }}>
@@ -404,7 +404,7 @@ function CombinedLandingPage() {
             </a>
           </div>
 
-          <div style={{ marginTop: 56, display: 'flex', justifyContent: 'center' }}>
+          <div style={{ marginTop: 42, display: 'flex', justifyContent: 'center' }}>
             <img src={window.__resources.customerLogos} alt="Customer logos: Goddard School, KW South Bay, BMW Motorcycles Fort Lauderdale, Luke’s, Servpro" style={{ width: '100%', maxWidth: 1120, height: 'auto', display: 'block', opacity: 0.85 }} />
           </div>
         </div>
@@ -417,7 +417,7 @@ function CombinedLandingPage() {
         position: 'relative',
         overflow: 'hidden',
         background: HI_BRAND.navy,
-        padding: '72px 80px 96px',
+        padding: '58px 80px 77px',
         textAlign: 'center',
       }}>
         <div style={{

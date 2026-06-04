@@ -235,7 +235,7 @@ function PricingTierCard({ tier }) {
           <h3 style={{
             fontFamily: 'Lora, Georgia, serif',
             fontSize: 32,
-            fontWeight: 400,
+            fontWeight: 700,
             color: text,
             margin: 0,
             lineHeight: 1.1,
@@ -277,7 +277,7 @@ function PricingTierCard({ tier }) {
 
       <div className="hi-pricing-tier-card__price">
         <div style={{ display: 'flex', alignItems: 'baseline', gap: 4, flexWrap: 'wrap' }}>
-          <span style={{ fontFamily: 'Manrope, sans-serif', fontSize: 44, fontWeight: 700, color: text, lineHeight: 1, letterSpacing: '-0.02em' }}>${tier.basePrice}</span>
+          <span style={{ fontFamily: 'Manrope, sans-serif', fontSize: 44, fontWeight: 400, color: text, lineHeight: 1, letterSpacing: '-0.02em' }}>${tier.basePrice}</span>
           <span style={{ fontSize: 15, fontWeight: 600, color: muted }}>/mo base</span>
         </div>
         <p className="hi-pricing-tier-card__price-detail" style={{ fontSize: 14, color: muted, margin: '6px 0 0' }}>
@@ -323,14 +323,25 @@ function PricingTierCard({ tier }) {
       </div>
 
       <div className="hi-pricing-tier-card__features">
-        {tier.groups.map((group) => (
-          <div key={group.label} className="hi-pricing-tier-card__feature-group">
+        {tier.groups.map((group) => {
+          const isPlanSavingsBlock = tier.id === 'concierge' && group.label === 'PLAN SAVINGS';
+          const groupText = isPlanSavingsBlock ? HI_BRAND.white : text;
+          const groupMuted = isPlanSavingsBlock ? 'rgba(255,255,255,0.72)' : muted;
+          const groupCheckColor = isPlanSavingsBlock ? HI_BRAND.tealLight : checkColor;
+          const groupLabelColor = isPlanSavingsBlock ? HI_BRAND.tealAccent : (isDark ? HI_BRAND.tealAccent : HI_BRAND.tealText);
+          const groupClass = [
+            'hi-pricing-tier-card__feature-group',
+            isPlanSavingsBlock ? 'hi-pricing-tier-card__feature-group--plan-savings' : '',
+          ].filter(Boolean).join(' ');
+
+          return (
+          <div key={group.label} className={groupClass}>
             <p className="hi-pricing-tier-card__feature-label" style={{
               fontSize: 11,
               fontWeight: 700,
               letterSpacing: '0.12em',
               textTransform: 'uppercase',
-              color: isDark ? HI_BRAND.tealAccent : HI_BRAND.tealText,
+              color: groupLabelColor,
             }}>
               {group.label}
             </p>
@@ -340,12 +351,12 @@ function PricingTierCard({ tier }) {
                 const key = isRich ? item.title : item;
                 return (
                   <div key={key} className="hi-pricing-tier-card__feature-item" role="listitem">
-                    <PricingCheck color={checkColor} />
+                    <PricingCheck color={groupCheckColor} />
                     <div>
                       {isRich ? (
                         <>
                           <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 8, marginBottom: 4 }}>
-                            <span style={{ fontSize: 14, fontWeight: 600, color: text }}>{item.title}</span>
+                            <span style={{ fontSize: 14, fontWeight: 600, color: groupText }}>{item.title}</span>
                             {item.badge && (
                               <span style={{
                                 fontSize: 10,
@@ -353,18 +364,18 @@ function PricingTierCard({ tier }) {
                                 letterSpacing: '0.06em',
                                 padding: '4px 10px',
                                 borderRadius: 24,
-                                background: isDark ? 'rgba(255,255,255,0.1)' : HI_BRAND.tealPale,
-                                color: isDark ? HI_BRAND.tealAccent : HI_BRAND.tealDark,
-                                border: `1px solid ${isDark ? 'rgba(255,255,255,0.18)' : 'rgba(20, 181, 171, 0.2)'}`,
+                                background: isPlanSavingsBlock ? 'rgba(255,255,255,0.1)' : (isDark ? 'rgba(255,255,255,0.1)' : HI_BRAND.tealPale),
+                                color: isPlanSavingsBlock ? HI_BRAND.tealAccent : (isDark ? HI_BRAND.tealAccent : HI_BRAND.tealDark),
+                                border: `1px solid ${isPlanSavingsBlock || isDark ? 'rgba(255,255,255,0.18)' : 'rgba(20, 181, 171, 0.2)'}`,
                               }}>
                                 {item.badge}
                               </span>
                             )}
                           </div>
-                          <p style={{ fontSize: 13, color: muted, margin: 0, lineHeight: 1.55 }}>{item.detail}</p>
+                          <p style={{ fontSize: 13, color: groupMuted, margin: 0, lineHeight: 1.55 }}>{item.detail}</p>
                         </>
                       ) : (
-                        <span style={{ fontSize: 14, color: text, lineHeight: 1.5 }}>{item}</span>
+                        <span style={{ fontSize: 14, color: groupText, lineHeight: 1.5 }}>{item}</span>
                       )}
                     </div>
                   </div>
@@ -372,7 +383,8 @@ function PricingTierCard({ tier }) {
               })}
             </div>
           </div>
-        ))}
+          );
+        })}
       </div>
     </article>
   );
@@ -625,20 +637,6 @@ function PricingPage() {
         maxWidth: 920,
         margin: '0 auto',
       }}>
-        <div style={{
-          display: 'inline-flex',
-          alignItems: 'center',
-          gap: 8,
-          background: HI_BRAND.tealPale,
-          borderRadius: 24,
-          padding: '6px 16px',
-          marginBottom: 24,
-        }}>
-          <span style={{ width: 7, height: 7, borderRadius: '50%', background: HI_BRAND.teal, display: 'inline-block' }} />
-          <span style={{ fontSize: 12, fontWeight: 700, color: HI_BRAND.tealDark, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-            Plan pricing
-          </span>
-        </div>
         <h1 style={{
           fontFamily: 'Lora, Georgia, serif',
           fontSize: 'clamp(40px, 5vw, 56px)',

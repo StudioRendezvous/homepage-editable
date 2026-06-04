@@ -15,6 +15,7 @@
   --hi-white: #FFFFFF;
   --hi-gray-50: #EFF1F4;
   --hi-gray-100: #DBDFE2;
+  --hi-gray-150: #C9CFD4;
   --hi-gray-200: #C3C9CF;
   --hi-gray-300: #9FA9B2;
   --hi-gray-400: #87939F;
@@ -356,8 +357,8 @@ button { font-family: inherit; }
     max-content
     auto
     1fr;
-  gap: 20px;
-  align-items: start;
+  gap: 16px;
+  align-items: stretch;
   padding-top: 18px;
   overflow: visible;
 }
@@ -367,6 +368,11 @@ button { font-family: inherit; }
   display: grid;
   grid-row: 1 / -1;
   grid-template-rows: subgrid;
+}
+
+/* Essentials / Complete — trim ~20% bottom padding (inline 36px) */
+.hi-pricing-tier-card--light {
+  padding-bottom: 29px !important;
 }
 
 .hi-pricing-tier-card--has-top-badge {
@@ -394,8 +400,8 @@ button { font-family: inherit; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: var(--hi-teal, #14b5ab);
-  color: var(--hi-white, #fff);
+  background: var(--hi-gray-150, #D0D5D9);
+  color: var(--hi-navy, #022A4D);
   font-family: Manrope, sans-serif;
   font-size: 11px;
   font-weight: 800;
@@ -403,13 +409,15 @@ button { font-family: inherit; }
   padding: 6px 16px;
   border-radius: 24px;
   white-space: nowrap;
-  box-shadow: 0 2px 10px rgba(20, 181, 171, 0.35);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   text-transform: uppercase;
   max-width: calc(100% + 32px);
 }
 
 .hi-pricing-tier-card--dark .hi-pricing-tier-card__includes-pill {
-  color: var(--hi-white, #fff);
+  background: var(--hi-gray-150, #D0D5D9);
+  color: var(--hi-navy, #022A4D);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .hi-pricing-tier-card__title-row {
@@ -450,6 +458,11 @@ button { font-family: inherit; }
   margin-top: -14px;
 }
 
+/* Complete tier only — one step lighter tagline (not Concierge pill/tagline) */
+.hi-pricing-tier-card--light.hi-pricing-tier-card--has-top-badge .hi-pricing-tier-card__tagline p {
+  color: var(--hi-teal, #14B5AB);
+}
+
 .hi-pricing-tier-card__desc,
 .hi-pricing-tier-card__price {
   align-self: start;
@@ -482,14 +495,57 @@ button { font-family: inherit; }
 
 .hi-pricing-tier-card__features {
   min-height: 0;
+  align-self: stretch;
+}
+
+/* Concierge — nested grid so PLAN SAVINGS row absorbs row-8 slack and bleeds down */
+.hi-pricing-tier-card--dark .hi-pricing-tier-card__features {
+  display: grid;
+  grid-template-rows: auto auto 1fr;
 }
 
 .hi-pricing-tier-card__feature-group {
-  margin-bottom: 22px;
+  margin-bottom: 18px;
 }
 
 .hi-pricing-tier-card__feature-group:last-child {
   margin-bottom: 0;
+}
+
+/* Concierge — match light cards' bottom padding; navy panel bleeds into it */
+.hi-pricing-tier-card--dark {
+  padding-bottom: 29px !important;
+}
+
+/* Concierge — PLAN SAVINGS block: full-bleed darkest navy panel (card padding 28px horizontal) */
+.hi-pricing-tier-card--dark .hi-pricing-tier-card__feature-group--plan-savings {
+  align-self: stretch;
+  min-height: 0;
+  margin-top: 26px;
+  /* Cancel card bottom padding + row-8 slack so navy flush to card bottom */
+  margin-bottom: -46px;
+  margin-left: -28px;
+  margin-right: -28px;
+  width: calc(100% + 56px);
+  padding: 20px 28px 29px;
+  background: var(--hi-navy-dark, #011E38);
+  border-radius: 0 0 12px 12px;
+}
+
+.hi-pricing-tier-card--dark .hi-pricing-tier-card__feature-group:has(+ .hi-pricing-tier-card__feature-group--plan-savings) {
+  margin-bottom: 0;
+}
+
+.hi-pricing-tier-card--dark .hi-pricing-tier-card__feature-group:not(.hi-pricing-tier-card__feature-group--plan-savings) {
+  margin-bottom: 9px;
+}
+
+.hi-pricing-tier-card--dark .hi-pricing-tier-card__highlight {
+  margin-bottom: -11px;
+}
+
+.hi-pricing-tier-card--dark .hi-pricing-tier-card__feature-group--plan-savings .hi-pricing-tier-card__feature-list {
+  gap: 4px;
 }
 
 .hi-pricing-tier-card__feature-label {
