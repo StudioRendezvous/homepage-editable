@@ -253,21 +253,17 @@ function HINav({
 function HIBetter401kCta({ variant } = {}) {
   const isPricing = variant === 'pricing';
   return (
-    <section style={{
+    <section
+      className={isPricing ? 'hi-better401k-cta hi-better401k-cta--pricing' : 'hi-better401k-cta'}
+      style={{
       position: 'relative',
       overflow: 'hidden',
-      background: '#fff',
-      padding: isPricing ? '64px 80px' : '64px 80px 96px',
+      background: isPricing
+        ? `linear-gradient(180deg, ${HI_BRAND.gray[50]} 0%, ${HI_BRAND.white} 90px), ${HI_BRAND.white}`
+        : '#fff',
+      padding: '32px clamp(24px, 5vw, 80px) 64px',
       textAlign: 'center',
     }}>
-      {!isPricing && (
-        <div style={{
-          position: 'absolute',
-          inset: 0,
-          background: 'radial-gradient(ellipse 70% 90% at 50% 100%, rgba(255, 207, 103, 0.18) 0%, transparent 58%), radial-gradient(ellipse 50% 60% at 0% 0%, rgba(143, 213, 209, 0.16) 0%, transparent 55%)',
-          pointerEvents: 'none',
-        }} />
-      )}
       <div style={{ position: 'relative', zIndex: 1, maxWidth: 820, margin: '0 auto' }}>
         <p style={{
           fontSize: 12,
@@ -275,7 +271,7 @@ function HIBetter401kCta({ variant } = {}) {
           letterSpacing: '0.18em',
           textTransform: 'uppercase',
           color: HI_BRAND.tealText,
-          margin: isPricing ? '0 0 12px' : '0 0 20px',
+          margin: '0 0 12px',
         }}>
           Ready when you are
         </p>
@@ -286,20 +282,13 @@ function HIBetter401kCta({ variant } = {}) {
           color: HI_BRAND.navy,
           lineHeight: 1.08,
           letterSpacing: '-0.02em',
-          margin: isPricing ? '0 0 12px' : '0 0 16px',
+          margin: '0 0 12px',
           textWrap: 'balance',
         }}>
           A better 401(k){' '}
-          <span style={isPricing ? {
+          <span style={{
             fontStyle: 'italic',
             color: HI_BRAND.tealDark,
-          } : {
-            fontStyle: 'italic',
-            background: 'radial-gradient(circle at 50% 42%, #14B5AB 0%, #0E938B 38%, #00585B 72%, #022A4D 100%)',
-            WebkitBackgroundClip: 'text',
-            backgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            color: 'transparent',
           }}>starts here</span>
         </h2>
         <p style={{
@@ -307,7 +296,7 @@ function HIBetter401kCta({ variant } = {}) {
           fontSize: 20,
           color: HI_BRAND.gray[600],
           lineHeight: 1.6,
-          margin: isPricing ? '0 0 28px' : '0 0 44px',
+          margin: '0 0 28px',
           maxWidth: 520,
           marginLeft: 'auto',
           marginRight: 'auto',
@@ -360,31 +349,33 @@ function HIFooter({ homeHref = 'index.html', pricingHref = '#' } = {}) {
     <footer style={{
       background: `radial-gradient(ellipse 120% 90% at 50% 0%, ${HI_BRAND.navy} 0%, ${HI_BRAND.black} 72%)`,
       color: '#fff',
-      padding: '64px 48px 40px',
+      padding: '48px 28px 32px',
       fontFamily: 'Manrope, sans-serif',
     }}>
-      <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr 1fr 1fr 1fr', gap: 40, marginBottom: 48 }}>
-        <div>
+      <div style={{ display: 'flex', alignItems: 'flex-start', gap: 70, maxWidth: 1120, margin: '0 auto 36px' }}>
+        <div style={{ flexShrink: 0, maxWidth: 220, marginLeft: -20 }}>
           <a href={homeHref} style={{ textDecoration: 'none', display: 'inline-block' }}>
             <HILogo color="#fff" height={22} />
           </a>
-          <p style={{ fontSize: 13, color: HI_BRAND.gray[300], marginTop: 16, lineHeight: 1.7, maxWidth: 240 }}>
+          <p style={{ fontSize: 13, color: HI_BRAND.gray[300], marginTop: 12, lineHeight: 1.65 }}>
             The highest-rated, fastest-growing 401(k) provider, setting the new standard for retirement.
           </p>
         </div>
-        {cols.map(col => (
-          <div key={col.title}>
-            <p style={{ fontSize: 12, fontWeight: 800, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#FFFFFF', marginBottom: 16 }}>{col.title}</p>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-              {col.links.map(link => (
-                <a key={link.label} href={link.href} className="hi-footer-link">{link.label}</a>
-              ))}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, minmax(120px, 1fr))', gap: 20, flex: 1, minWidth: 0 }}>
+          {cols.map(col => (
+            <div key={col.title} style={{ textAlign: 'left' }}>
+              <p style={{ fontSize: 12, fontWeight: 800, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#FFFFFF', marginBottom: 12 }}>{col.title}</p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                {col.links.map(link => (
+                  <a key={link.label} href={link.href} className="hi-footer-link">{link.label}</a>
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-      <div style={{ borderTop: `1px solid rgba(255,255,255,0.1)`, paddingTop: 24, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <p style={{ fontSize: 12, color: HI_BRAND.gray[400] }}>© 2026 Human Interest Inc. All rights reserved.</p>
+      <div style={{ borderTop: `1px solid rgba(255,255,255,0.1)`, paddingTop: 18, display: 'flex', justifyContent: 'space-between', alignItems: 'center', maxWidth: 1120, margin: '0 auto' }}>
+        <p style={{ fontSize: 12, color: HI_BRAND.gray[400], marginLeft: -20 }}>© 2026 Human Interest Inc. All rights reserved.</p>
         <p style={{ fontSize: 11, color: HI_BRAND.gray[500], maxWidth: 500, textAlign: 'right', lineHeight: 1.5 }}>
           Investment advisory services offered through Human Interest Advisors LLC, an SEC-registered investment adviser.
         </p>

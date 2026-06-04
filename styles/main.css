@@ -567,6 +567,8 @@ button { font-family: inherit; }
 
 .hi-pricing-comparison-tabs .hi-btn--toggle {
   flex: 0 0 auto;
+  font-size: 14px;
+  padding: 8px 18px;
 }
 
 .hi-pricing-comparison-table {
@@ -634,8 +636,8 @@ button { font-family: inherit; }
   }
 
   .hi-pricing-comparison-tabs .hi-btn--toggle {
-    font-size: 12px;
-    padding: 7px 12px;
+    font-size: 13px;
+    padding: 8px 14px;
   }
 }
 

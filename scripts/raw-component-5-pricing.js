@@ -383,9 +383,12 @@ function PricingComparisonTabs() {
   const tab = PRICING_PAGE.comparisonTabs[activeIdx];
 
   return (
-    <section style={{
+    <section
+      className="hi-pricing-comparison-section"
+      style={{
+      position: 'relative',
       background: HI_BRAND.gray[50],
-      padding: '58px clamp(24px, 5vw, 80px) 112px',
+      padding: '58px clamp(24px, 5vw, 80px) 36px',
       fontFamily: 'Manrope, sans-serif',
     }}>
       <div style={{ maxWidth: 1280, margin: '0 auto' }}>
@@ -433,7 +436,7 @@ function PricingComparisonTabs() {
                 display: 'inline-flex',
                 background: HI_BRAND.gray[50],
                 borderRadius: 8,
-                padding: 3,
+                padding: 4,
                 gap: 0,
               }}
             >
@@ -446,16 +449,15 @@ function PricingComparisonTabs() {
                     role="tab"
                     aria-selected={active}
                     onClick={() => setActiveIdx(i)}
+                    onMouseEnter={() => setActiveIdx(i)}
                     className={`hi-btn hi-btn--toggle${active ? ' hi-btn--toggle-active' : ''}`}
                     style={{
                       fontFamily: 'Manrope, sans-serif',
-                      fontSize: 13,
                       fontWeight: 600,
                       color: HI_BRAND.navy,
                       background: active ? '#fff' : 'transparent',
                       border: 'none',
                       borderRadius: 6,
-                      padding: '7px 16px',
                       cursor: 'pointer',
                       boxShadow: active ? '0 1px 3px rgba(2,42,77,0.12), 0 0 0 1px rgba(2,42,77,0.06)' : 'none',
                       whiteSpace: 'nowrap',
