@@ -17,12 +17,10 @@ const PRICING_PAGE = {
       id: 'essentials',
       name: 'Essentials',
       tagline: 'THE BASICS, DONE RIGHT',
-      description: 'Affordable, all-in-one 401(k) to get your team saving. Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod.',
       basePrice: 80,
       perEmployee: 5,
       dark: false,
       popular: false,
-      highlight: 'Payroll sync, fund lineup management, and U.S.-based support — everything you need to get your team saving.',
       groups: [
         {
           label: 'ADMINISTRATION',
@@ -58,13 +56,11 @@ const PRICING_PAGE = {
       id: 'complete',
       name: 'Complete',
       tagline: 'LESS ON YOUR PLATE',
-      description: 'End-to-end 401(k) — we take on the burden of compliance, so you don\'t have to. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       basePrice: 180,
       perEmployee: 7,
       dark: false,
       popular: false,
       includesBadge: 'Include Essentials',
-      highlight: 'We take the filings, tasks, and deadlines off your hands — and the liability that comes with them.',
       groups: [
         {
           label: 'COMPLIANCE',
@@ -91,13 +87,11 @@ const PRICING_PAGE = {
       id: 'concierge',
       name: 'Concierge',
       tagline: 'FULLY MANAGED PLAN',
-      description: 'The ultimate 401(k) with dedicated service, compliance oversight, audit protection, and savings to lower your plan cost.',
       basePrice: 280,
       perEmployee: 9,
       dark: true,
       popular: true,
       includesBadge: 'Include Complete + Essentials',
-      highlight: 'A named human who knows your plan, compliance oversight so nothing slips, and savings to lower your plan\'s cost.',
       groups: [
         {
           label: 'SERVICE',
