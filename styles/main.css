@@ -202,9 +202,15 @@ button { font-family: inherit; }
   max-width: 360px;
   height: auto;
   object-fit: contain;
-  background: transparent;
-  background-color: transparent;
+  overflow: visible;
+  background: none !important;
+  background-color: transparent !important;
   vertical-align: top;
+}
+
+/* GitHub Pages: Chromium often paints VP9 alpha as black; screen knocks out the matte */
+.hi-hero-awards-video--gh-pages {
+  mix-blend-mode: screen;
 }
 
 /* Wide benchmarks layout scrolls inside its lane — does not widen the page */

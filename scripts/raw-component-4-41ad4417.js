@@ -12,6 +12,7 @@
 function CombinedLandingPage() {
   const [openFaq, setOpenFaq] = React.useState(null);
   const [testimonialIdx, setTestimonialIdx] = React.useState(0);
+  const isGitHubPages = /\.github\.io$/i.test(window.location.hostname);
 
   // ─── Data ──────────────────────────────────────────────────────────────────
   const testimonials = [
@@ -133,14 +134,22 @@ function CombinedLandingPage() {
               >
                 <div className="hi-hero-awards-media" style={{ width: '100%', maxWidth: 360 }}>
                   <video
-                    className="hi-hero-awards-video"
+                    className={'hi-hero-awards-video' + (isGitHubPages ? ' hi-hero-awards-video--gh-pages' : '')}
                     src={window.__resources.awardsImg}
                     autoPlay
                     loop
                     muted
                     playsInline
                     aria-label="Awards"
-                    style={{ display: 'block', width: '100%', maxWidth: 360, height: 'auto', objectFit: 'contain' }}
+                    style={{
+                      display: 'block',
+                      width: '100%',
+                      maxWidth: 360,
+                      height: 'auto',
+                      objectFit: 'contain',
+                      background: 'transparent',
+                      backgroundColor: 'transparent',
+                    }}
                   />
                 </div>
               </div>
