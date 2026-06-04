@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Human Interest — Combined Landing Page</title>
+  <link rel="stylesheet" href="styles/main.css?v=20260602">
+  <!--
+    Faithful editable recreation of Homepage_v1 (5-28-26).html
+    Renders the same CombinedLandingPage React prototype extracted from the bundler draft.
+    Source bundler: ../Homepage_v1 (5-28-26).html
+
+    IMPORTANT: open via local server (not by double-clicking this file).
+    Run: ./preview.sh   or   python3 -m http.server 8081
+  -->
+</head>
+<body>
+  <div id="root"></div>
+
+  <script>
+    window.__resources = {
+      simonDavies: 'assets/images/simonDavies.png',
+      teenCancerLogo: 'assets/images/teenCancerLogo.png',
+      awardsImg: 'assets/webm/HI - Hero Section Animation - 0626.webm',
+      customerLogos: 'assets/images/customerLogos.png',
+    };
+  </script>
+
+  <!-- Local copies — no CDN required -->
+  <script src="vendor/react.production.min.js"></script>
+  <script src="vendor/react-dom.production.min.js"></script>
+  <script src="vendor/babel.min.js"></script>
+  <script src="scripts/boot.js"></script>
+</body>
+</html>

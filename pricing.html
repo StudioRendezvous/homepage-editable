@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Human Interest — Pricing</title>
+  <link rel="stylesheet" href="styles/main.css?v=20260602">
+  <!--
+    Pricing page — tiers + tabbed comparison from design assets.
+    Run: ./preview.sh   or   python3 -m http.server 8081
+    Open: http://localhost:8081/pricing.html
+  -->
+</head>
+<body>
+  <div id="root"></div>
+
+  <script>
+    window.__hiHomeHref = 'index.html';
+    window.__resources = {};
+  </script>
+
+  <script src="vendor/react.production.min.js"></script>
+  <script src="vendor/react-dom.production.min.js"></script>
+  <script src="vendor/babel.min.js"></script>
+  <script src="scripts/pricing-boot.js"></script>
+</body>
+</html>

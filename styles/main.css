@@ -1,0 +1,409 @@
+
+/* Fonts extracted from Homepage_v1 (5-28-26).html — required for the React prototype. */
+:root {
+  --hi-navy: #022A4D;
+  --hi-teal: #14B5AB;
+  --hi-teal-light: #8FD5D1;
+  --hi-teal-text: #0E938B;
+  --hi-teal-accent: #6ABFB9;
+  --hi-teal-pale: #E5F4F3;
+  --hi-teal-dark: #00585B;
+  --hi-yellow: #FFCF67;
+  --hi-black: #000025;
+  --hi-white: #FFFFFF;
+  --hi-gray-50: #EFF1F4;
+  --hi-gray-100: #DBDFE2;
+  --hi-gray-200: #C3C9CF;
+  --hi-gray-300: #9FA9B2;
+  --hi-gray-400: #87939F;
+  --hi-gray-500: #6C7682;
+  --hi-gray-600: #515966;
+  --hi-gray-700: #363B49;
+  --hi-gray-800: #1B1E2D;
+  --hi-gray-900: #0E101E;
+}
+
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/font-4b6a8c14.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../assets/fonts/font-21e1382f.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../assets/fonts/font-02df1448.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../assets/fonts/font-21e1382f.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/font-b4b72bb1.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/font-fbf4c504.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/font-a42126c7.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/font-c46ec505.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/font-87abb5e5.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/font-da02ef8d.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/font-cef870d0.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/font-9e381215.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../assets/fonts/font-b4b72bb1.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../assets/fonts/font-b4b72bb1.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/font-cef870d0.woff2') format('woff2');
+  unicode-range: U+0000-FFFF;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/font-3eb8124d.woff2') format('woff2');
+}
+
+* { box-sizing: border-box; }
+html {
+  margin: 0;
+  padding: 0;
+}
+body {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  overflow-x: hidden;
+  font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+  font-variant-ligatures: common-ligatures;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+button { font-family: inherit; }
+
+/* Hero header — yellow glow pinned to shell top-right via background layer */
+.hi-header-shell {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  overflow: visible;
+  background-color: #fff;
+  background-image: radial-gradient(
+    ellipse 100% 95% at 100% 0%,
+    #FFCF67 0%,
+    rgba(255, 207, 103, 0.5) 38%,
+    rgba(255, 207, 103, 0.18) 56%,
+    transparent 72%
+  );
+  background-repeat: no-repeat;
+  background-size: min(860px, 58vw) 100%;
+  background-position: right top;
+  isolation: isolate;
+}
+
+.hi-header-shell::before {
+  content: none;
+}
+
+.hi-header-shell__content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Wide benchmarks layout scrolls inside its lane — does not widen the page */
+.hi-benchmarks-shell {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: visible;
+}
+
+/* Subtle button hover states — pair with .hi-btn + variant class on CTAs */
+.hi-btn {
+  transition:
+    background-color 160ms ease,
+    color 160ms ease,
+    border-color 160ms ease,
+    box-shadow 200ms ease,
+    filter 200ms ease;
+}
+
+.hi-btn:active {
+  transition-duration: 80ms;
+}
+
+/* Even halo — blur + spread, no vertical offset or lift */
+.hi-btn--navy {
+  box-shadow: 0 0 14px 3px rgba(2, 42, 77, 0.14);
+}
+
+.hi-btn--navy:hover {
+  background-color: #034a7a !important;
+  box-shadow: 0 0 18px 6px rgba(2, 42, 77, 0.26) !important;
+  filter: brightness(1.04);
+}
+
+.hi-btn--white {
+  box-shadow: 0 0 14px 3px rgba(2, 42, 77, 0.08);
+}
+
+.hi-btn--white:hover {
+  background-color: #f4f7fa !important;
+  box-shadow: 0 0 18px 6px rgba(2, 42, 77, 0.14) !important;
+  filter: brightness(1.02);
+}
+
+.hi-btn--outline-light:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.95) !important;
+  box-shadow: 0 0 16px 5px rgba(255, 255, 255, 0.12) !important;
+}
+
+.hi-btn--outline-navy:hover {
+  background-color: rgba(2, 42, 77, 0.05) !important;
+  box-shadow: 0 0 16px 5px rgba(2, 42, 77, 0.12) !important;
+}
+
+.hi-btn--yellow {
+  box-shadow: 0 0 18px 5px rgba(255, 207, 103, 0.32);
+}
+
+.hi-btn--yellow:hover {
+  background-color: #ffd880 !important;
+  box-shadow: 0 0 22px 8px rgba(255, 207, 103, 0.42) !important;
+  filter: brightness(1.03);
+}
+
+.hi-btn--teal:hover {
+  background-color: #119a92 !important;
+  box-shadow: 0 0 16px 6px rgba(20, 181, 171, 0.36) !important;
+  filter: brightness(1.04);
+}
+
+.hi-btn--teal-pill:hover {
+  background-color: #119a92 !important;
+  filter: brightness(1.06);
+}
+
+.hi-btn--ghost:hover {
+  background-color: var(--hi-gray-50) !important;
+}
+
+.hi-btn--toggle:not(.hi-btn--toggle-active):hover {
+  background-color: rgba(255, 255, 255, 0.65) !important;
+}
+
+.hi-btn--icon {
+  box-shadow: 0 0 10px 3px rgba(20, 181, 171, 0.24);
+}
+
+.hi-btn--icon:hover {
+  background-color: #119a92 !important;
+  box-shadow: 0 0 16px 6px rgba(20, 181, 171, 0.4) !important;
+  filter: brightness(1.04);
+}
+
+.hi-btn--dot:hover {
+  filter: brightness(1.08);
+}
+
+.hi-btn--link:hover {
+  opacity: 0.82;
+}
+
+.hi-footer-link {
+  font-size: 13px;
+  color: var(--hi-gray-200);
+  text-decoration: none;
+  font-weight: 500;
+  transition: font-weight 160ms ease, color 160ms ease;
+}
+
+.hi-footer-link:hover {
+  font-weight: 700;
+  color: #fff;
+}
+
+/* Pricing page — tier cards */
+.hi-pricing-tier-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+  align-items: stretch;
+}
+
+.hi-pricing-tier-card {
+  display: grid;
+  grid-template-rows:
+    auto
+    auto
+    minmax(48px, auto)
+    minmax(94px, auto)
+    auto
+    minmax(110px, auto)
+    auto
+    auto
+    1fr;
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    border-color 220ms ease;
+}
+
+.hi-pricing-tier-card__desc--essentials {
+  align-self: end;
+}
+
+.hi-pricing-tier-card__price {
+  margin-bottom: 0;
+}
+
+.hi-pricing-tier-card__highlight:empty {
+  min-height: 0;
+}
+
+.hi-pricing-tier-card__cta {
+  padding-top: 4px;
+  padding-bottom: 24px;
+}
+
+.hi-pricing-tier-card__includes:empty {
+  display: none;
+}
+
+.hi-pricing-tier-card--light:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(2, 42, 77, 0.1) !important;
+  border-color: var(--hi-gray-200) !important;
+}
+
+.hi-pricing-tier-card--dark:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(2, 42, 77, 0.28) !important;
+}
+
+.hi-pricing-tier-card--popular {
+  z-index: 1;
+}
+
+.hi-pricing-tier-card .hi-btn {
+  width: 100%;
+}
+
+/* Pricing comparison — pill toggle tab bar (matches HINav audience toggle) */
+.hi-pricing-comparison-tabs-wrap {
+  padding: clamp(20px, 3vw, 28px) clamp(24px, 4vw, 56px) 0;
+}
+
+.hi-pricing-comparison-tabs {
+  flex-wrap: wrap;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.hi-pricing-comparison-tabs .hi-btn--toggle {
+  flex: 0 0 auto;
+}
+
+.hi-pricing-comparison-table {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--hi-gray-100);
+}
+
+@media (max-width: 900px) {
+  .hi-pricing-comparison-panel {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 720px) {
+  .hi-pricing-tier-row {
+    grid-template-columns: 1fr !important;
+  }
+
+  .hi-pricing-comparison-tabs {
+    flex-wrap: nowrap;
+  }
+
+  .hi-pricing-comparison-tabs .hi-btn--toggle {
+    font-size: 12px;
+    padding: 7px 12px;
+  }
+}
+
+/* Prefer typographic apostrophes/quotes where supported */
