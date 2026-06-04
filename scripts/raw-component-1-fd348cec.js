@@ -249,6 +249,98 @@ function HINav({
   );
 }
 
+// ─── "A better 401(k) starts here" final CTA (homepage + pricing) ───────────────
+function HIBetter401kCta({ variant } = {}) {
+  const isPricing = variant === 'pricing';
+  return (
+    <section style={{
+      position: 'relative',
+      overflow: 'hidden',
+      background: '#fff',
+      padding: isPricing ? '64px 80px' : '64px 80px 96px',
+      textAlign: 'center',
+    }}>
+      {!isPricing && (
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          background: 'radial-gradient(ellipse 70% 90% at 50% 100%, rgba(255, 207, 103, 0.18) 0%, transparent 58%), radial-gradient(ellipse 50% 60% at 0% 0%, rgba(143, 213, 209, 0.16) 0%, transparent 55%)',
+          pointerEvents: 'none',
+        }} />
+      )}
+      <div style={{ position: 'relative', zIndex: 1, maxWidth: 820, margin: '0 auto' }}>
+        <p style={{
+          fontSize: 12,
+          fontWeight: 800,
+          letterSpacing: '0.18em',
+          textTransform: 'uppercase',
+          color: HI_BRAND.tealText,
+          margin: isPricing ? '0 0 12px' : '0 0 20px',
+        }}>
+          Ready when you are
+        </p>
+        <h2 style={{
+          fontFamily: 'Lora, Georgia, serif',
+          fontSize: 56,
+          fontWeight: 400,
+          color: HI_BRAND.navy,
+          lineHeight: 1.08,
+          letterSpacing: '-0.02em',
+          margin: isPricing ? '0 0 12px' : '0 0 16px',
+          textWrap: 'balance',
+        }}>
+          A better 401(k){' '}
+          <span style={isPricing ? {
+            fontStyle: 'italic',
+            color: HI_BRAND.tealDark,
+          } : {
+            fontStyle: 'italic',
+            background: 'radial-gradient(circle at 50% 42%, #14B5AB 0%, #0E938B 38%, #00585B 72%, #022A4D 100%)',
+            WebkitBackgroundClip: 'text',
+            backgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            color: 'transparent',
+          }}>starts here</span>
+        </h2>
+        <p style={{
+          fontFamily: 'Manrope, sans-serif',
+          fontSize: 20,
+          color: HI_BRAND.gray[600],
+          lineHeight: 1.6,
+          margin: isPricing ? '0 0 28px' : '0 0 44px',
+          maxWidth: 520,
+          marginLeft: 'auto',
+          marginRight: 'auto',
+        }}>
+          Join the future of retirement saving.
+        </p>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 20, flexWrap: 'wrap' }}>
+          <a href="#" className="hi-btn hi-btn--navy" style={{
+            background: HI_BRAND.navy,
+            color: '#fff',
+            borderRadius: 8,
+            padding: '16px 36px',
+            fontWeight: 700,
+            fontSize: 16,
+            textDecoration: 'none',
+          }}>Get Started in Minutes</a>
+          <span style={{ color: HI_BRAND.gray[400], fontSize: 13, fontWeight: 500 }}>or</span>
+          <a href="#" className="hi-btn hi-btn--outline-navy" style={{
+            background: '#fff',
+            color: HI_BRAND.navy,
+            border: `2px solid ${HI_BRAND.navy}`,
+            borderRadius: 8,
+            padding: '14px 36px',
+            fontWeight: 700,
+            fontSize: 16,
+            textDecoration: 'none',
+          }}>Talk to an Expert</a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ─── Footer ───────────────────────────────────────────────────────────────────
 function HIFooter({ homeHref = 'index.html', pricingHref = '#' } = {}) {
   const productLinks = [
@@ -256,6 +348,7 @@ function HIFooter({ homeHref = 'index.html', pricingHref = '#' } = {}) {
     { label: 'Payroll Integrations', href: '#' },
     { label: 'Compliance', href: '#' },
     { label: 'Employee Experience', href: '#' },
+    { label: 'Pricing', href: pricingHref },
   ];
   const cols = [
     { title: 'Product', links: productLinks },
@@ -301,4 +394,4 @@ function HIFooter({ homeHref = 'index.html', pricingHref = '#' } = {}) {
 }
 
 // Export all shared components
-Object.assign(window, { HI_BRAND, HILogo, HINav, HIFooter });
+Object.assign(window, { HI_BRAND, HILogo, HINav, HIBetter401kCta, HIFooter });

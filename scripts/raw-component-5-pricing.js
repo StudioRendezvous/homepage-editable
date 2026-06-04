@@ -17,11 +17,12 @@ const PRICING_PAGE = {
       id: 'essentials',
       name: 'Essentials',
       tagline: 'THE BASICS, DONE RIGHT',
-      description: 'Affordable, all-in-one 401(k) to get your team saving.',
+      description: 'Affordable, all-in-one 401(k) to get your team saving. Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod.',
       basePrice: 80,
       perEmployee: 5,
       dark: false,
       popular: false,
+      highlight: 'Payroll sync, fund lineup management, and U.S.-based support — everything you need to get your team saving.',
       groups: [
         {
           label: 'ADMINISTRATION',
@@ -57,13 +58,12 @@ const PRICING_PAGE = {
       id: 'complete',
       name: 'Complete',
       tagline: 'LESS ON YOUR PLATE',
-      description: 'End-to-end 401(k) — we take on the burden of compliance, so you don\'t have to.',
+      description: 'End-to-end 401(k) — we take on the burden of compliance, so you don\'t have to. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       basePrice: 180,
       perEmployee: 7,
       dark: false,
       popular: false,
-      includesBadge: 'Includes Essentials',
-      includesHeadline: 'Everything in Essentials, plus:',
+      includesBadge: 'Include Essentials',
       highlight: 'We take the filings, tasks, and deadlines off your hands — and the liability that comes with them.',
       groups: [
         {
@@ -85,8 +85,7 @@ const PRICING_PAGE = {
       perEmployee: 9,
       dark: true,
       popular: true,
-      includesBadge: 'Includes Complete + Essentials',
-      includesHeadline: 'Everything in Complete, plus:',
+      includesBadge: 'Include Complete + Essentials',
       highlight: 'A named human who knows your plan, compliance oversight so nothing slips, and savings to lower your plan\'s cost.',
       groups: [
         {
@@ -184,7 +183,6 @@ const PRICING_PAGE = {
       ],
     },
   ],
-  disclaimer: 'A one-time setup fee of $499 may apply. A monthly investment advisory fee is paid to Human Interest Advisors (HIA) of 0.01% of plan assets when HIA acts as a 3(38) fiduciary, or 0.018% when acting as a 3(21) fiduciary. A separate fee for recordkeeping services and custody-related expenses is paid to Human Interest Inc. (HII) of 0.05% of plan assets. All prices are exclusive of applicable taxes.',
 };
 
 function PricingCheck({ color = HI_BRAND.teal, size = 18 }) {
@@ -205,6 +203,7 @@ function PricingTierCard({ tier }) {
     'hi-pricing-tier-card',
     isDark ? 'hi-pricing-tier-card--dark' : 'hi-pricing-tier-card--light',
     tier.popular ? 'hi-pricing-tier-card--popular' : '',
+    tier.includesBadge ? 'hi-pricing-tier-card--has-top-badge' : '',
   ].filter(Boolean).join(' ');
 
   return (
@@ -214,7 +213,7 @@ function PricingTierCard({ tier }) {
         position: 'relative',
         background: isDark ? HI_BRAND.navy : HI_BRAND.white,
         borderRadius: 12,
-        padding: tier.popular ? '40px 28px 36px' : '36px 28px',
+        padding: '36px 28px',
         boxShadow: isDark
           ? '0 8px 32px rgba(2, 42, 77, 0.22)'
           : '0 2px 12px rgba(2, 42, 77, 0.06)',
@@ -223,38 +222,31 @@ function PricingTierCard({ tier }) {
           : `1px solid ${HI_BRAND.gray[100]}`,
       }}
     >
-      {tier.popular && (
-        <div style={{
-          position: 'absolute',
-          top: -13,
-          left: '50%',
-          transform: 'translateX(-50%)',
-          background: HI_BRAND.yellow,
-          color: HI_BRAND.navy,
-          fontSize: 11,
-          fontWeight: 800,
-          letterSpacing: '0.1em',
-          padding: '6px 18px',
-          borderRadius: 24,
-          whiteSpace: 'nowrap',
-          boxShadow: '0 2px 8px rgba(255, 207, 103, 0.35)',
-        }}>
-          MOST POPULAR
-        </div>
-      )}
+      <div className="hi-pricing-tier-card__top-badge" aria-hidden={!tier.includesBadge}>
+        {tier.includesBadge && (
+          <div className="hi-pricing-tier-card__includes-pill">
+            {tier.includesBadge}
+          </div>
+        )}
+      </div>
 
       <div className="hi-pricing-tier-card__title">
-        <h3 style={{
-          fontFamily: 'Lora, Georgia, serif',
-          fontSize: 32,
-          fontWeight: 400,
-          color: text,
-          margin: '0 0 8px',
-          lineHeight: 1.1,
-          letterSpacing: '-0.015em',
-        }}>
-          {tier.name}
-        </h3>
+        <div className={`hi-pricing-tier-card__title-row${tier.popular ? ' hi-pricing-tier-card__title-row--with-badge' : ''}`}>
+          <h3 style={{
+            fontFamily: 'Lora, Georgia, serif',
+            fontSize: 32,
+            fontWeight: 400,
+            color: text,
+            margin: 0,
+            lineHeight: 1.1,
+            letterSpacing: '-0.015em',
+          }}>
+            {tier.name}
+          </h3>
+          {tier.popular && (
+            <span className="hi-pricing-tier-card__popular-badge">MOST POPULAR</span>
+          )}
+        </div>
       </div>
 
       <div className="hi-pricing-tier-card__tagline">
@@ -270,33 +262,7 @@ function PricingTierCard({ tier }) {
         </p>
       </div>
 
-      <div className="hi-pricing-tier-card__badge">
-        {tier.includesBadge && (
-          <div style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: 6,
-            background: isDark ? 'rgba(20, 181, 171, 0.15)' : HI_BRAND.tealPale,
-            border: `1px solid ${isDark ? 'rgba(143, 213, 209, 0.35)' : 'rgba(20, 181, 171, 0.25)'}`,
-            borderRadius: 24,
-            padding: '6px 14px',
-            alignSelf: 'flex-start',
-          }}>
-            <PricingCheck color={checkColor} size={14} />
-            <span style={{
-              fontFamily: 'Manrope, sans-serif',
-              fontSize: 12,
-              fontWeight: 700,
-              letterSpacing: '0.04em',
-              color: isDark ? HI_BRAND.tealAccent : HI_BRAND.tealDark,
-            }}>
-              {tier.includesBadge}
-            </span>
-          </div>
-        )}
-      </div>
-
-      <div className={`hi-pricing-tier-card__desc${tier.id === 'essentials' ? ' hi-pricing-tier-card__desc--essentials' : ''}`}>
+      <div className="hi-pricing-tier-card__desc">
         {tier.description && (
           <p style={{
             fontSize: 15,
@@ -310,29 +276,13 @@ function PricingTierCard({ tier }) {
       </div>
 
       <div className="hi-pricing-tier-card__price">
-        <div style={{ display: 'flex', alignItems: 'baseline', gap: 6, flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', alignItems: 'baseline', gap: 4, flexWrap: 'wrap' }}>
           <span style={{ fontFamily: 'Manrope, sans-serif', fontSize: 44, fontWeight: 700, color: text, lineHeight: 1, letterSpacing: '-0.02em' }}>${tier.basePrice}</span>
           <span style={{ fontSize: 15, fontWeight: 600, color: muted }}>/mo base</span>
         </div>
-        <p style={{ fontSize: 14, color: muted, margin: '10px 0 0' }}>
+        <p className="hi-pricing-tier-card__price-detail" style={{ fontSize: 14, color: muted, margin: '6px 0 0' }}>
           + ${tier.perEmployee}/mo per eligible employee
         </p>
-      </div>
-
-      <div className="hi-pricing-tier-card__highlight">
-        {tier.highlight && (
-          <p style={{
-            fontFamily: 'Lora, Georgia, serif',
-            fontSize: 19,
-            fontWeight: 400,
-            color: text,
-            lineHeight: 1.5,
-            margin: 0,
-            letterSpacing: '-0.01em',
-          }}>
-            {tier.highlight}
-          </p>
-        )}
       </div>
 
       <div className="hi-pricing-tier-card__cta">
@@ -356,45 +306,40 @@ function PricingTierCard({ tier }) {
         </a>
       </div>
 
-      <div className="hi-pricing-tier-card__includes">
-        {tier.includesHeadline && (
-          <div style={{
-            borderTop: `1px solid ${isDark ? 'rgba(255,255,255,0.12)' : HI_BRAND.gray[100]}`,
-            paddingTop: 20,
+      <div className="hi-pricing-tier-card__highlight">
+        {tier.highlight && (
+          <p style={{
+            fontFamily: 'Lora, Georgia, serif',
+            fontSize: 19,
+            fontWeight: 400,
+            color: text,
+            lineHeight: 1.5,
+            margin: 0,
+            letterSpacing: '-0.01em',
           }}>
-            <p style={{
-              fontFamily: 'Manrope, sans-serif',
-              fontSize: 14,
-              fontWeight: 700,
-              color: text,
-              margin: 0,
-              lineHeight: 1.4,
-            }}>
-              {tier.includesHeadline}
-            </p>
-          </div>
+            {tier.highlight}
+          </p>
         )}
       </div>
 
       <div className="hi-pricing-tier-card__features">
         {tier.groups.map((group) => (
-          <div key={group.label} style={{ marginBottom: 22 }}>
-            <p style={{
+          <div key={group.label} className="hi-pricing-tier-card__feature-group">
+            <p className="hi-pricing-tier-card__feature-label" style={{
               fontSize: 11,
               fontWeight: 700,
               letterSpacing: '0.12em',
               textTransform: 'uppercase',
               color: isDark ? HI_BRAND.tealAccent : HI_BRAND.tealText,
-              margin: '0 0 12px',
             }}>
               {group.label}
             </p>
-            <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 12 }}>
+            <div className="hi-pricing-tier-card__feature-list" role="list">
               {group.items.map((item) => {
                 const isRich = typeof item === 'object';
                 const key = isRich ? item.title : item;
                 return (
-                  <li key={key} style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
+                  <div key={key} className="hi-pricing-tier-card__feature-item" role="listitem">
                     <PricingCheck color={checkColor} />
                     <div>
                       {isRich ? (
@@ -422,10 +367,10 @@ function PricingTierCard({ tier }) {
                         <span style={{ fontSize: 14, color: text, lineHeight: 1.5 }}>{item}</span>
                       )}
                     </div>
-                  </li>
+                  </div>
                 );
               })}
-            </ul>
+            </div>
           </div>
         ))}
       </div>
@@ -440,7 +385,7 @@ function PricingComparisonTabs() {
   return (
     <section style={{
       background: HI_BRAND.gray[50],
-      padding: '96px clamp(24px, 5vw, 80px) 112px',
+      padding: '58px clamp(24px, 5vw, 80px) 112px',
       fontFamily: 'Manrope, sans-serif',
     }}>
       <div style={{ maxWidth: 1280, margin: '0 auto' }}>
@@ -451,7 +396,7 @@ function PricingComparisonTabs() {
             letterSpacing: '0.16em',
             textTransform: 'uppercase',
             color: HI_BRAND.tealText,
-            margin: '0 0 20px',
+            margin: '0 0 9px',
           }}>
             Why Human Interest
           </p>
@@ -528,8 +473,8 @@ function PricingComparisonTabs() {
             style={{
               padding: 'clamp(28px, 4vw, 48px) clamp(24px, 4vw, 56px)',
               display: 'grid',
-              gridTemplateColumns: 'minmax(220px, 1fr) minmax(300px, 1.15fr)',
-              gap: 'clamp(28px, 4vw, 56px)',
+              gridTemplateColumns: 'minmax(200px, 0.9fr) minmax(300px, 1.25fr)',
+              gap: 'clamp(24px, 3.5vw, 44px)',
               alignItems: 'start',
             }}
           >
@@ -574,7 +519,7 @@ function PricingComparisonTabs() {
                     fontWeight: 700,
                     letterSpacing: '0.12em',
                     color: HI_BRAND.white,
-                    padding: '14px 16px',
+                    padding: '11px 16px',
                     background: HI_BRAND.navy,
                   }}>
                     HUMAN INTEREST
@@ -585,8 +530,8 @@ function PricingComparisonTabs() {
                     fontWeight: 700,
                     letterSpacing: '0.12em',
                     color: HI_BRAND.gray[600],
-                    padding: '14px 16px',
-                    background: HI_BRAND.white,
+                    padding: '11px 16px',
+                    background: HI_BRAND.gray[100],
                     borderBottom: `1px solid ${HI_BRAND.gray[100]}`,
                   }}>
                     OTHER PROVIDERS
@@ -595,7 +540,7 @@ function PricingComparisonTabs() {
                   {tab.rows.map((row, ri) => (
                     <React.Fragment key={row.feature}>
                       <div style={{
-                        padding: '16px 12px 16px 16px',
+                        padding: '12px 12px 12px 16px',
                         borderTop: ri > 0 ? `1px solid ${HI_BRAND.gray[100]}` : 'none',
                         background: HI_BRAND.white,
                       }}>
@@ -614,17 +559,17 @@ function PricingComparisonTabs() {
                         )}
                       </div>
                       <div style={{
-                        padding: '16px',
-                        borderTop: ri > 0 ? `1px solid ${HI_BRAND.gray[100]}` : 'none',
-                        background: 'rgba(20, 181, 171, 0.07)',
+                        padding: '12px',
+                        borderTop: ri > 0 ? '1px solid rgba(255, 255, 255, 0.12)' : 'none',
+                        background: '#0F3F63',
                         textAlign: 'center',
                       }}>
-                        <span style={{ fontSize: 14, fontWeight: 700, color: HI_BRAND.navy, lineHeight: 1.45 }}>{row.hi}</span>
+                        <span style={{ fontSize: 14, fontWeight: 700, color: HI_BRAND.white, lineHeight: 1.45 }}>{row.hi}</span>
                       </div>
                       <div style={{
-                        padding: '16px',
+                        padding: '12px',
                         borderTop: ri > 0 ? `1px solid ${HI_BRAND.gray[100]}` : 'none',
-                        background: HI_BRAND.white,
+                        background: HI_BRAND.gray[50],
                         textAlign: 'center',
                       }}>
                         <span style={{ fontSize: 14, color: HI_BRAND.gray[600], lineHeight: 1.45 }}>{row.other}</span>
@@ -657,7 +602,7 @@ function PricingPage() {
       />
 
       <section style={{
-        padding: '88px clamp(32px, 6vw, 120px) 48px',
+        padding: '60px clamp(32px, 6vw, 120px) 48px',
         textAlign: 'center',
         maxWidth: 920,
         margin: '0 auto',
@@ -719,16 +664,15 @@ function PricingPage() {
       </section>
 
       <section style={{
-        padding: '48px clamp(24px, 5vw, 80px) 96px',
+        padding: '48px clamp(24px, 5vw, 80px) 58px',
         background: HI_BRAND.gray[50],
       }}>
         <div
           className="hi-pricing-tier-row"
           style={{
-          maxWidth: 1280,
-          margin: '0 auto',
-          paddingTop: 0,
-        }}
+            maxWidth: 1280,
+            margin: '0 auto',
+          }}
         >
           {PRICING_PAGE.tiers.map((tier) => (
             <PricingTierCard key={tier.id} tier={tier} />
@@ -738,20 +682,7 @@ function PricingPage() {
 
       <PricingComparisonTabs />
 
-      <section style={{
-        padding: '48px clamp(24px, 5vw, 80px) 64px',
-        maxWidth: 960,
-        margin: '0 auto',
-      }}>
-        <p style={{
-          fontSize: 12,
-          color: HI_BRAND.gray[500],
-          lineHeight: 1.65,
-          margin: 0,
-        }}>
-          {PRICING_PAGE.disclaimer}
-        </p>
-      </section>
+      <HIBetter401kCta variant="pricing" />
 
       <HIFooter homeHref={homeHref} pricingHref="pricing.html" />
     </div>

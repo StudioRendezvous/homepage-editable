@@ -1151,7 +1151,7 @@ function StandardBlade_MasterDetailMint() {
   const PHOTO_PAD = 16;
   const PHOTO_RADIUS = 12;
   const PHOTO_HEIGHT_ADMIN = 130;
-  const PHOTO_HEIGHT_OTHER = 165;
+  const PHOTO_HEIGHT_OTHER = 180;
   const getPhotoHeight = (id) => id === 'administration' ? PHOTO_HEIGHT_ADMIN : PHOTO_HEIGHT_OTHER;
   const CONTENT_PHOTO_GAP = 16;
   const PHOTO_IMAGES = {};
@@ -1258,7 +1258,7 @@ function StandardBlade_MasterDetailMint() {
       style={{
         fontFamily: 'Manrope, sans-serif',
         background: CANVAS,
-        padding: '104px 80px 120px',
+        padding: '104px 120px 120px',
         color: '#fff'
       }}>
 
@@ -1368,7 +1368,7 @@ function StandardBlade_MasterDetailMint() {
                   <span
                     style={{
                       fontFamily: 'Lora, Georgia, serif',
-                      fontSize: 18,
+                      fontSize: 20,
                       fontWeight: 400,
                       lineHeight: 1.2,
                       letterSpacing: '-0.01em',

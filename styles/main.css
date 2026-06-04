@@ -2,6 +2,8 @@
 /* Fonts extracted from Homepage_v1 (5-28-26).html — required for the React prototype. */
 :root {
   --hi-navy: #022A4D;
+  --hi-navy-mid: #0F3F63;
+  --hi-navy-dark: #011E38;
   --hi-teal: #14B5AB;
   --hi-teal-light: #8FD5D1;
   --hi-teal-text: #0E938B;
@@ -345,58 +347,183 @@ button { font-family: inherit; }
 .hi-pricing-tier-row {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 28px;
-  align-items: stretch;
-}
-
-.hi-pricing-tier-card {
-  display: grid;
   grid-template-rows:
     auto
     auto
+    auto
     minmax(48px, auto)
-    minmax(94px, auto)
-    auto
-    minmax(110px, auto)
-    auto
+    minmax(52px, auto)
+    max-content
     auto
     1fr;
-  transition:
-    transform 220ms ease,
-    box-shadow 220ms ease,
-    border-color 220ms ease;
+  gap: 20px;
+  align-items: start;
+  padding-top: 18px;
+  overflow: visible;
 }
 
-.hi-pricing-tier-card__desc--essentials {
-  align-self: end;
+.hi-pricing-tier-card {
+  overflow: visible;
+  display: grid;
+  grid-row: 1 / -1;
+  grid-template-rows: subgrid;
+}
+
+.hi-pricing-tier-card--has-top-badge {
+  margin-top: 0;
+}
+
+.hi-pricing-tier-card__top-badge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.hi-pricing-tier-card__includes-pill {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--hi-teal, #14b5ab);
+  color: var(--hi-white, #fff);
+  font-family: Manrope, sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  padding: 6px 16px;
+  border-radius: 24px;
+  white-space: nowrap;
+  box-shadow: 0 2px 10px rgba(20, 181, 171, 0.35);
+  text-transform: uppercase;
+  max-width: calc(100% + 32px);
+}
+
+.hi-pricing-tier-card--dark .hi-pricing-tier-card__includes-pill {
+  color: var(--hi-white, #fff);
+}
+
+.hi-pricing-tier-card__title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 2px;
+}
+
+.hi-pricing-tier-card__title-row h3 {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.hi-pricing-tier-card__popular-badge {
+  flex: 0 0 auto;
+  align-self: center;
+  background: var(--hi-yellow, #ffcf67);
+  color: var(--hi-navy, #022a4d);
+  font-family: Manrope, sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  padding: 5px 12px;
+  border-radius: 24px;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(255, 207, 103, 0.35);
+  text-transform: uppercase;
+}
+
+.hi-pricing-tier-card__title-row--with-badge h3 {
+  font-size: clamp(26px, 2.4vw, 32px);
+}
+
+.hi-pricing-tier-card__tagline {
+  align-self: start;
+  margin-top: -14px;
+}
+
+.hi-pricing-tier-card__desc,
+.hi-pricing-tier-card__price {
+  align-self: start;
 }
 
 .hi-pricing-tier-card__price {
   margin-bottom: 0;
 }
 
+.hi-pricing-tier-card__cta {
+  padding-top: 5px;
+  padding-bottom: 0;
+  align-self: start;
+}
+
+.hi-pricing-tier-card__highlight {
+  margin-top: 4px;
+  margin-bottom: 1px;
+  padding-top: 0;
+  padding-bottom: 0;
+  align-self: start;
+}
+
 .hi-pricing-tier-card__highlight:empty {
+  min-height: 0;
+  margin-top: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.hi-pricing-tier-card__features {
   min-height: 0;
 }
 
-.hi-pricing-tier-card__cta {
-  padding-top: 4px;
-  padding-bottom: 24px;
+.hi-pricing-tier-card__feature-group {
+  margin-bottom: 22px;
 }
 
-.hi-pricing-tier-card__includes:empty {
+.hi-pricing-tier-card__feature-group:last-child {
+  margin-bottom: 0;
+}
+
+.hi-pricing-tier-card__feature-label {
+  margin: 0 0 8px;
+}
+
+.hi-pricing-tier-card__feature-list {
+  list-style: none;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  padding-inline-start: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.hi-pricing-tier-card__feature-item {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  list-style: none;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  padding-inline-start: 0;
+}
+
+.hi-pricing-tier-card__feature-item::marker {
+  content: none;
   display: none;
-}
-
-.hi-pricing-tier-card--light:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 28px rgba(2, 42, 77, 0.1) !important;
-  border-color: var(--hi-gray-200) !important;
-}
-
-.hi-pricing-tier-card--dark:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 40px rgba(2, 42, 77, 0.28) !important;
+  font-size: 0;
+  width: 0;
+  height: 0;
 }
 
 .hi-pricing-tier-card--popular {
@@ -407,8 +534,27 @@ button { font-family: inherit; }
   width: 100%;
 }
 
+/* Pricing tier CTAs — Concierge only: lighter teal on hover; Essentials/Complete unchanged */
+.hi-pricing-tier-card--light .hi-pricing-tier-card__cta .hi-btn--navy:hover {
+  background-color: var(--hi-navy, #022a4d) !important;
+  box-shadow: 0 0 14px 3px rgba(2, 42, 77, 0.14);
+  filter: none;
+}
+
+.hi-pricing-tier-card--dark .hi-pricing-tier-card__cta .hi-btn--teal {
+  transition: background-color 160ms ease;
+}
+
+.hi-pricing-tier-card--dark .hi-pricing-tier-card__cta .hi-btn--teal:hover {
+  background-color: #2ec4ba !important;
+  box-shadow: none;
+  filter: none;
+}
+
 /* Pricing comparison — pill toggle tab bar (matches HINav audience toggle) */
 .hi-pricing-comparison-tabs-wrap {
+  display: flex;
+  justify-content: center;
   padding: clamp(20px, 3vw, 28px) clamp(24px, 4vw, 56px) 0;
 }
 
@@ -427,6 +573,49 @@ button { font-family: inherit; }
   border-radius: 10px;
   overflow: hidden;
   border: 1px solid var(--hi-gray-100);
+}
+
+/* Comparison table — vertically center all body cells (feature + HI + Other) */
+.hi-pricing-comparison-table > div:nth-child(3n+1):not(:first-child),
+.hi-pricing-comparison-table > div:nth-child(3n+2),
+.hi-pricing-comparison-table > div:nth-child(3n) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hi-pricing-comparison-table > div:nth-child(3n+1):not(:first-child) {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+/* Comparison table — Human Interest header (brand navy) */
+.hi-pricing-comparison-table > div:nth-child(2) {
+  background-color: var(--hi-navy);
+}
+
+/* Comparison table — Human Interest body cells (lighter navy) */
+.hi-pricing-comparison-table > div:nth-child(3n+2):not(:nth-child(2)) {
+  background-color: var(--hi-navy-mid);
+}
+
+/* Comparison table — Other providers header (darker gray) */
+.hi-pricing-comparison-table > div:nth-child(3) {
+  background-color: var(--hi-gray-100);
+}
+
+/* Comparison table — Other providers body cells (light gray) */
+.hi-pricing-comparison-table > div:nth-child(3n):not(:nth-child(3)) {
+  background-color: var(--hi-gray-50);
+}
+
+/* Two-column copy + comparison table (inline grid in raw-component-5-pricing.js) */
+.hi-pricing-comparison-panel {
+  display: grid;
+  grid-template-columns: minmax(200px, 0.9fr) minmax(300px, 1.25fr);
+  gap: clamp(24px, 3.5vw, 44px);
+  align-items: start;
 }
 
 @media (max-width: 900px) {
