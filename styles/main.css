@@ -400,7 +400,7 @@ button { font-family: inherit; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: var(--hi-gray-150, #D0D5D9);
+  background: var(--hi-gray-150, #C9CFD4);
   color: var(--hi-navy, #022A4D);
   font-family: Manrope, sans-serif;
   font-size: 11px;
@@ -415,7 +415,7 @@ button { font-family: inherit; }
 }
 
 .hi-pricing-tier-card--dark .hi-pricing-tier-card__includes-pill {
-  background: var(--hi-gray-150, #D0D5D9);
+  background: var(--hi-gray-150, #C9CFD4);
   color: var(--hi-navy, #022A4D);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
@@ -460,7 +460,7 @@ button { font-family: inherit; }
 
 /* Complete tier only — one step lighter tagline (not Concierge pill/tagline) */
 .hi-pricing-tier-card--light.hi-pricing-tier-card--has-top-badge .hi-pricing-tier-card__tagline p {
-  color: var(--hi-teal, #14B5AB);
+  color: var(--hi-teal, #14B5AB) !important;
 }
 
 .hi-pricing-tier-card__desc,
@@ -470,6 +470,14 @@ button { font-family: inherit; }
 
 .hi-pricing-tier-card__price {
   margin-bottom: 0;
+}
+
+.hi-pricing-tier-card__price-amount {
+  font-family: Manrope, sans-serif;
+  font-size: 44px;
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.02em;
 }
 
 .hi-pricing-tier-card__cta {

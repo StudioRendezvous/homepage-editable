@@ -277,7 +277,7 @@ function PricingTierCard({ tier }) {
 
       <div className="hi-pricing-tier-card__price">
         <div style={{ display: 'flex', alignItems: 'baseline', gap: 4, flexWrap: 'wrap' }}>
-          <span style={{ fontFamily: 'Manrope, sans-serif', fontSize: 44, fontWeight: 400, color: text, lineHeight: 1, letterSpacing: '-0.02em' }}>${tier.basePrice}</span>
+          <span className="hi-pricing-tier-card__price-amount" style={{ color: text }}>${tier.basePrice}</span>
           <span style={{ fontSize: 15, fontWeight: 600, color: muted }}>/mo base</span>
         </div>
         <p className="hi-pricing-tier-card__price-detail" style={{ fontSize: 14, color: muted, margin: '6px 0 0' }}>
