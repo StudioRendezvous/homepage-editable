@@ -26,7 +26,7 @@ const SIX_STANDARD = {
   eyebrow: 'The new 401(k) standard',
   headline: 'What you should expect from a 401(k) provider.',
   subhead:
-  'Introducing a new benchmark for employers — the 6 benchmarks every 401(k) provider should hit.',
+  'Introducing a new benchmark for employers — the 5 benchmarks every 401(k) provider should hit.',
   items: [
   {
     id: 'administration',
@@ -98,19 +98,6 @@ const SIX_STANDARD = {
     'Employers pay $0 in transaction fees',
     'All pricing published on our pricing page',
     'Price Match Guarantee']
-
-  },
-  {
-    id: 'price',
-    label: 'Start in minutes, not months',
-    icon: 'tag',
-    tag: 'Onboarding',
-    summary: 'One-click setup for popular plan types, with flexible options for advanced plans.',
-    intro: "Other providers make onboarding a big project with weeks of paperwork and back-and-forth. We make it easy and flexible.",
-    bullets: [
-    'One-click setup from popular plan designs',
-    'Flexible options available ($0)',
-    'Customize your eligibility criteria ($0)']
 
   }]
 
@@ -823,8 +810,7 @@ function StandardBlade_TileGridMint() {
     compliance: ['$0 in added compliance costs'],
     service: ['Dedicated US-based service'],
     investments: ['No surprise fees or high expense ratios'],
-    'employee-savings': ['$0 transaction fees'],
-    price: ['One-click setup']
+    'employee-savings': ['$0 transaction fees']
   };
 
   // Per-card summary overrides (Mint-only copy tweaks). Falls back to item.summary.
@@ -839,8 +825,7 @@ function StandardBlade_TileGridMint() {
     compliance: "We shoulder the burden of keeping your plan compliant:",
     service: "We help you stay ahead of problems:",
     investments: "We help your employees save more:",
-    'employee-savings': "Our pricing is simple, public, and competitive:",
-    price: "Onboarding is easy and flexible:"
+    'employee-savings': "Our pricing is simple, public, and competitive:"
   };
 
   // Per-card bullet overrides (Mint-only). Falls back to item.bullets.
@@ -1198,8 +1183,7 @@ function StandardBlade_MasterDetailMint() {
     compliance: ['$0 in added compliance costs'],
     service: ['Dedicated US-based service'],
     investments: ['No surprise fees or high expense ratios'],
-    'employee-savings': ['$0 transaction fees'],
-    price: ['One-click setup']
+    'employee-savings': ['$0 transaction fees']
   };
 
   const SUMMARY_OVERRIDES = {
@@ -1212,8 +1196,7 @@ function StandardBlade_MasterDetailMint() {
     compliance: "We shoulder the burden of keeping your plan compliant:",
     service: "We help you stay ahead of problems:",
     investments: "We help your employees save more:",
-    'employee-savings': "Our pricing is simple, public, and competitive:",
-    price: "Onboarding is easy and flexible:"
+    'employee-savings': "Our pricing is simple, public, and competitive:"
   };
 
   const BULLETS_OVERRIDES = {
@@ -1284,7 +1267,7 @@ function StandardBlade_MasterDetailMint() {
           align="left"
           maxWidth={820}
           headline="We set a new standard for 401(k) providers."
-          subhead="The six benchmarks every provider should hit. Hover any to see how Human Interest delivers." />
+          subhead="The five benchmarks every provider should hit. Hover any to see how Human Interest delivers." />
 
         <div
           ref={layoutRef}
@@ -1317,7 +1300,7 @@ function StandardBlade_MasterDetailMint() {
           {/* Left rail — equal-height rows matching detail panel */}
           <div
             role="tablist"
-            aria-label="Six benchmarks"
+            aria-label="Five benchmarks"
             style={{
               display: 'flex',
               flexDirection: 'column',
@@ -1475,7 +1458,7 @@ function StandardBlade_MasterDetailMint() {
                 style={{
                   display: 'flex',
                   flexDirection: 'column',
-                  gap: 3,
+                  gap: 6,
                   flex: 1,
                   minHeight: 0,
                   overflowY: 'auto'
@@ -1491,7 +1474,7 @@ function StandardBlade_MasterDetailMint() {
                           lineHeight: 1.32,
                           color: 'rgba(255, 255, 255, 0.92)',
                           fontWeight: 800,
-                          margin: 0,
+                          margin: '12px 0 14px',
                           textWrap: 'pretty'
                         }}>
 
