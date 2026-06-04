@@ -192,7 +192,7 @@ function SixHeader({ tone = 'light', align = 'left', maxWidth = 820, eyebrowColo
       
       <p
         style={{
-          fontSize: 12,
+          fontSize: 13,
           fontWeight: 800,
           letterSpacing: '0.2em',
           textTransform: 'uppercase',
@@ -274,7 +274,7 @@ function StandardBlade_TileGridPaper() {
 
           <span
             style={{
-              fontSize: 12,
+              fontSize: 13,
               fontWeight: 700,
               letterSpacing: '0.18em',
               textTransform: 'uppercase',
@@ -565,7 +565,7 @@ function StandardBlade_ExpandingTileGrid() {
           
           <span
             style={{
-              fontSize: 12,
+              fontSize: 13,
               fontWeight: 700,
               letterSpacing: '0.18em',
               textTransform: 'uppercase',
@@ -1655,7 +1655,7 @@ function StandardBlade_TileGridYellow() {
 
           <span
             style={{
-              fontSize: 12,
+              fontSize: 13,
               fontWeight: 700,
               letterSpacing: '0.18em',
               textTransform: 'uppercase',
@@ -1915,7 +1915,7 @@ function StandardBlade_TileGridWhitePanel() {
 
           <span
             style={{
-              fontSize: 12,
+              fontSize: 13,
               fontWeight: 700,
               letterSpacing: '0.18em',
               textTransform: 'uppercase',

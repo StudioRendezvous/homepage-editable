@@ -259,14 +259,14 @@ function HIBetter401kCta({ variant } = {}) {
       position: 'relative',
       overflow: 'hidden',
       background: isPricing
-        ? `linear-gradient(180deg, ${HI_BRAND.gray[50]} 0%, ${HI_BRAND.white} 90px), ${HI_BRAND.white}`
+        ? `linear-gradient(135deg, ${HI_BRAND.gray[50]} 0%, ${HI_BRAND.white} 90px), ${HI_BRAND.white}`
         : '#fff',
       padding: '32px clamp(24px, 5vw, 80px) 64px',
       textAlign: 'center',
     }}>
       <div style={{ position: 'relative', zIndex: 1, maxWidth: 820, margin: '0 auto' }}>
         <p style={{
-          fontSize: 12,
+          fontSize: 13,
           fontWeight: 800,
           letterSpacing: '0.18em',
           textTransform: 'uppercase',

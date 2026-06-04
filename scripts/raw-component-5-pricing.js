@@ -251,7 +251,7 @@ function PricingTierCard({ tier }) {
 
       <div className="hi-pricing-tier-card__tagline">
         <p style={{
-          fontSize: 11,
+          fontSize: 12,
           fontWeight: 700,
           letterSpacing: '0.14em',
           textTransform: 'uppercase',
@@ -337,7 +337,7 @@ function PricingTierCard({ tier }) {
           return (
           <div key={group.label} className={groupClass}>
             <p className="hi-pricing-tier-card__feature-label" style={{
-              fontSize: 11,
+              fontSize: 12,
               fontWeight: 700,
               letterSpacing: '0.12em',
               textTransform: 'uppercase',
@@ -429,7 +429,8 @@ function PricingComparisonPanel({ tab, active }) {
         ))}
       </div>
 
-      <div style={{ overflowX: 'auto' }}>
+      <div className="hi-pricing-comparison-table-shadow">
+        <div className="hi-pricing-comparison-table-scroll">
         <div
           className="hi-pricing-comparison-table"
           style={{
@@ -504,7 +505,8 @@ function PricingComparisonPanel({ tab, active }) {
             </React.Fragment>
           ))}
         </div>
-      </div>
+        </div>
+        </div>
     </div>
   );
 }
@@ -524,7 +526,7 @@ function PricingComparisonTabs() {
       <div style={{ maxWidth: 1280, margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: 48, maxWidth: 720, marginLeft: 'auto', marginRight: 'auto' }}>
           <p style={{
-            fontSize: 12,
+            fontSize: 13,
             fontWeight: 700,
             letterSpacing: '0.16em',
             textTransform: 'uppercase',
@@ -554,7 +556,6 @@ function PricingComparisonTabs() {
             borderRadius: 12,
             border: `1px solid ${HI_BRAND.gray[100]}`,
             boxShadow: '0 2px 16px rgba(2, 42, 77, 0.05)',
-            overflow: 'hidden',
           }}
         >
           <div className="hi-pricing-comparison-tabs-wrap">

@@ -102,7 +102,7 @@ function CombinedLandingPage() {
               marginBottom: 24, alignSelf: 'flex-start',
             }}>
               <span style={{ width: 7, height: 7, borderRadius: '50%', background: HI_BRAND.teal, display: 'inline-block' }} />
-              <span style={{ fontSize: 12, fontWeight: 700, color: HI_BRAND.tealDark, letterSpacing: '0.08em', textTransform: 'uppercase' }}>50,000+ employers trust Human Interest</span>
+              <span style={{ fontSize: 13, fontWeight: 700, color: HI_BRAND.tealDark, letterSpacing: '0.08em', textTransform: 'uppercase' }}>50,000+ employers trust Human Interest</span>
             </div>
             <h1 style={{
               fontFamily: 'Lora, Georgia, serif',
@@ -208,7 +208,7 @@ function CombinedLandingPage() {
           <div style={{ textAlign: 'center', marginBottom: 48, maxWidth: 760, marginLeft: 'auto', marginRight: 'auto' }}>
             {/* Eyebrow — flanking rules removed per brief */}
             <p style={{
-              fontSize: 12,
+              fontSize: 13,
               fontWeight: 700,
               letterSpacing: '0.16em',
               textTransform: 'uppercase',
@@ -327,7 +327,7 @@ function CombinedLandingPage() {
           zIndex: 0,
         }} />
         <div style={{ position: 'relative', zIndex: 1, maxWidth: 1120, margin: '0 auto' }}>
-          <p style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: HI_BRAND.tealText, marginBottom: 16 }}>TESTIMONIALS</p>
+          <p style={{ fontSize: 14, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: HI_BRAND.tealText, marginBottom: 16 }}>TESTIMONIALS</p>
           <h2 style={{ fontFamily: 'Lora, Georgia, serif', fontSize: 44, fontWeight: 400, color: HI_BRAND.navy, lineHeight: 1.15, margin: '0 0 48px', maxWidth: 640 }}>
             Trusted by employers nationwide
           </h2>
@@ -428,7 +428,7 @@ function CombinedLandingPage() {
         }} />
         <div style={{ position: 'relative', zIndex: 1, maxWidth: 820, margin: '0 auto' }}>
           <p style={{
-            fontSize: 12,
+            fontSize: 13,
             fontWeight: 800,
             letterSpacing: '0.18em',
             textTransform: 'uppercase',

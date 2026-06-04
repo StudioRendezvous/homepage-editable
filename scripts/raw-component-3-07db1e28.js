@@ -47,7 +47,7 @@ function HowVariantA() {
       <div style={{ maxWidth: 1180, margin: '0 auto' }}>
         {/* Header */}
         <div style={{ marginBottom: 56, maxWidth: 820 }}>
-          <p style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: HI_BRAND.tealText, marginBottom: 16 }}>How it works for you</p>
+          <p style={{ fontSize: 14, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: HI_BRAND.tealText, marginBottom: 16 }}>How it works for you</p>
           <h2 style={{
             fontFamily: 'Lora, Georgia, serif',
             fontSize: 56,
@@ -67,7 +67,7 @@ function HowVariantA() {
           {/* LEFT — the two "you" steps, stacked */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
             <p style={{
-              fontSize: 11, fontWeight: 800, letterSpacing: '0.16em', textTransform: 'uppercase',
+              fontSize: 12, fontWeight: 800, letterSpacing: '0.16em', textTransform: 'uppercase',
               color: HI_BRAND.gray[400], margin: '0 0 4px'
             }}>You · 2 things</p>
 
@@ -147,7 +147,7 @@ function HowVariantA() {
             }} />
             <div style={{ position: 'relative' }}>
               <p style={{
-                fontSize: 11, fontWeight: 800, letterSpacing: '0.16em', textTransform: 'uppercase',
+                fontSize: 12, fontWeight: 800, letterSpacing: '0.16em', textTransform: 'uppercase',
                 color: HI_BRAND.tealAccent, margin: '0 0 18px'
               }}>Us · everything else</p>
 
@@ -256,7 +256,7 @@ function HowVariantB() {
           alignItems: 'start', marginBottom: 96
         }}>
           <div>
-            <p style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: HI_BRAND.tealText, marginBottom: 16 }}>HOW IT WORKS</p>
+            <p style={{ fontSize: 14, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: HI_BRAND.tealText, marginBottom: 16 }}>HOW IT WORKS</p>
             <h2 style={{
               fontFamily: 'Lora, Georgia, serif',
               fontSize: 60,
@@ -304,7 +304,7 @@ function HowVariantB() {
               border: `1px solid ${HI_BRAND.gray[100]}`,
               borderRadius: 999,
               padding: '8px 16px',
-              fontSize: 11,
+              fontSize: 12,
               fontWeight: 800,
               letterSpacing: '0.14em',
               textTransform: 'uppercase',
@@ -324,7 +324,7 @@ function HowVariantB() {
               background: HI_BRAND.navy,
               borderRadius: 999,
               padding: '8px 16px',
-              fontSize: 11,
+              fontSize: 12,
               fontWeight: 800,
               letterSpacing: '0.14em',
               textTransform: 'uppercase',
@@ -380,14 +380,14 @@ function HowVariantB() {
                   }}>
                     {!isUs ?
                       <span style={{
-                        fontSize: 11,
+                        fontSize: 12,
                         fontWeight: 800,
                         letterSpacing: '0.16em',
                         textTransform: 'uppercase',
                         color: HI_BRAND.gray[400]
                       }}>Your step</span> :
                       <span style={{
-                        fontSize: 11,
+                        fontSize: 12,
                         fontWeight: 800,
                         letterSpacing: '0.16em',
                         textTransform: 'uppercase',
@@ -475,7 +475,7 @@ function HowVariantB() {
                     display: 'flex', alignItems: 'center', gap: 12
                   }}>
                       <span style={{
-                      fontSize: 11, fontWeight: 800, letterSpacing: '0.14em', textTransform: 'uppercase',
+                      fontSize: 12, fontWeight: 800, letterSpacing: '0.14em', textTransform: 'uppercase',
                       color: HI_BRAND.tealAccent
                     }}>What we handle for you</span>
                       <span style={{ flex: 1, height: 1, background: 'rgba(255,255,255,0.16)' }} />
