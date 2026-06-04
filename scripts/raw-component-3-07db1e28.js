@@ -348,7 +348,7 @@ function HowVariantB() {
             const isUs = s.actor === 'us';
             return (
               <div key={i} style={{
-                borderLeft: i > 0 ? `1px solid ${HI_BRAND.gray[100]}` : 'none',
+                borderLeft: i === 1 ? `1px solid ${HI_BRAND.gray[100]}` : 'none',
                 boxSizing: 'border-box'
               }}>
                 <div style={{

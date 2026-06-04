@@ -238,6 +238,38 @@ button { font-family: inherit; }
   overflow-y: visible;
 }
 
+.hi-benchmarks-shell--light {
+  background: #022a4d;
+}
+
+.hi-standard-blade--light {
+  scroll-margin-top: 24px;
+}
+
+/* Light detail panel: photo + overflow:hidden used to clip the border on bottom corners.
+   Stroke is an ::after overlay; inner body keeps overflow clipping for scroll. */
+.hi-standard-blade--light .hi-standard-blade__detail-panel {
+  position: relative;
+  overflow: visible;
+  background-clip: padding-box;
+}
+
+.hi-standard-blade--light .hi-standard-blade__detail-panel::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  border: 2px solid var(--hi-teal);
+  pointer-events: none;
+  z-index: 4;
+  box-sizing: border-box;
+}
+
+.hi-standard-blade--light .hi-standard-blade__detail-body {
+  overflow: hidden;
+  border-radius: 6px;
+}
+
 /* Subtle button hover states — pair with .hi-btn + variant class on CTAs */
 .hi-btn {
   transition:

@@ -1136,13 +1136,15 @@ function StandardBlade_TileGridMint() {
 // row heights when bullets expand.
 // ═════════════════════════════════════════════════════════════════════════════
 
-function StandardBlade_MasterDetailMint() {
+function StandardBlade_MasterDetailMint({ variant = 'default' } = {}) {
   const C = SIX_STANDARD;
   const [current, setCurrent] = React.useState(C.items[0].id);
+  const isLight = variant === 'light';
 
   const CANVAS = '#022A4D';
   const HAIRLINE = 'rgba(2, 42, 77, 0.17)';
   const TILE_FILL = '#B0BFD0';
+  const TILE_ACTIVE = '#FFFFFF';
   const RAIL_WIDTH = 360;
   const RAIL_GAP = 10;
   const CONNECTOR_GAP = 32;
@@ -1154,10 +1156,18 @@ function StandardBlade_MasterDetailMint() {
   const getPhotoHeight = (id) => id === 'administration' ? PHOTO_HEIGHT_ADMIN : PHOTO_HEIGHT_OTHER;
   const CONTENT_PHOTO_GAP = 16;
   const PHOTO_IMAGES = {
-    administration: 'assets/images/image_test_01.png',
+    administration: 'assets/images/image_test_01.png?v=1',
     compliance: 'assets/images/image_test_02.png?v=9',
+    service: 'assets/images/image_test_03.png?v=3',
     investments: 'assets/images/image_test_04.png'
   };
+  const PHOTO_IMAGES_LIGHT = {
+    ...PHOTO_IMAGES,
+    administration: 'assets/images/image_test_01.png?v=1',
+    compliance: 'assets/images/image_test_02_light.png?v=1',
+    service: 'assets/images/image_test_03_light.png?v=3'
+  };
+  const photoImages = isLight ? PHOTO_IMAGES_LIGHT : PHOTO_IMAGES;
 
   const layoutRef = React.useRef(null);
   const tabRefs = React.useRef([]);
@@ -1256,8 +1266,28 @@ function StandardBlade_MasterDetailMint() {
 
   const currentItem = C.items.find((item) => item.id === current) ?? C.items[0];
 
+  const detailPanelStyle = isLight ? {
+    background: '#FFFFFF',
+    /* Teal stroke rendered in CSS (::after) so it stays visible over photo corners */
+    border: '2px solid transparent',
+    boxShadow: '0 0 0 1px rgba(20, 181, 171, 0.32), 0 12px 36px rgba(20, 181, 171, 0.14), 0 28px 56px rgba(2, 42, 77, 0.12)',
+    color: HI_BRAND.navy,
+  } : {
+    background: 'rgba(255, 255, 255, 0.07)',
+    backdropFilter: 'blur(12px)',
+    WebkitBackdropFilter: 'blur(12px)',
+    border: '1px solid rgba(255, 255, 255, 0.18)',
+    boxShadow: '0 18px 40px rgba(0, 0, 0, 0.22)',
+    color: '#FFFFFF',
+  };
+
+  const photoPlaceholderGradient = isLight
+    ? 'linear-gradient(145deg, #E5F4F3 0%, #C3C9CF 42%, #EFF1F4 100%)'
+    : 'linear-gradient(145deg, rgba(143, 213, 209, 0.22) 0%, rgba(74, 118, 164, 0.32) 52%, rgba(2, 42, 77, 0.42) 100%)';
+
   return (
     <section
+      className={isLight ? 'hi-standard-blade--light' : undefined}
       style={{
         fontFamily: 'Manrope, sans-serif',
         background: CANVAS,
@@ -1271,6 +1301,7 @@ function StandardBlade_MasterDetailMint() {
           tone="dark"
           align="left"
           maxWidth={820}
+          eyebrowColor={undefined}
           headline="We set a new standard for 401(k) providers."
           subhead="The five benchmarks every provider should hit. Hover any to see how Human Interest delivers." />
 
@@ -1294,7 +1325,7 @@ function StandardBlade_MasterDetailMint() {
               width: CONNECTOR_GAP - 12,
               top: connectorTop,
               height: CONNECTOR_HEIGHT,
-              background: 'rgba(74, 118, 164, 0.52)',
+              background: isLight ? HI_BRAND.teal : 'rgba(74, 118, 164, 0.52)',
               borderRadius: CONNECTOR_HEIGHT,
               transform: 'translateY(-50%)',
               transition: 'top 220ms cubic-bezier(0.4, 0, 0.2, 1), opacity 160ms ease',
@@ -1338,7 +1369,7 @@ function StandardBlade_MasterDetailMint() {
                     minHeight: 0,
                     borderRadius: 8,
                     border: `1px solid ${isCurrent ? 'rgba(20, 181, 171, 0.55)' : HAIRLINE}`,
-                    background: isCurrent ? '#FFFFFF' : TILE_FILL,
+                    background: isCurrent ? TILE_ACTIVE : TILE_FILL,
                     boxShadow: isCurrent ?
                       '0 0 0 1px rgba(20, 181, 171, 0.32), 0 12px 36px rgba(20, 181, 171, 0.22), 0 0 32px rgba(20, 181, 171, 0.14)' :
                       'none',
@@ -1387,21 +1418,18 @@ function StandardBlade_MasterDetailMint() {
           {/* Right panel — fixed frame; grouped type hierarchy */}
           <article
             role="tabpanel"
+            className={isLight ? 'hi-standard-blade__detail-panel' : undefined}
             aria-label={currentItem.tag}
             style={{
-              background: 'rgba(255, 255, 255, 0.07)',
-              backdropFilter: 'blur(12px)',
-              WebkitBackdropFilter: 'blur(12px)',
+              ...detailPanelStyle,
               borderRadius: 8,
-              border: '1px solid rgba(255, 255, 255, 0.18)',
-              boxShadow: '0 18px 40px rgba(0, 0, 0, 0.22)',
               padding: '28px 40px 40px',
-              color: '#FFFFFF',
               boxSizing: 'border-box',
               height: DETAIL_HEIGHT,
-              overflow: 'hidden',
+              overflow: isLight ? 'visible' : 'hidden',
               display: 'flex',
-              flexDirection: 'column'
+              flexDirection: 'column',
+              zIndex: isLight ? 3 : 1,
             }}>
 
             {/* Hero — headline, summary */}
@@ -1417,7 +1445,7 @@ function StandardBlade_MasterDetailMint() {
                       fontFamily: 'Lora, Georgia, serif',
                       fontSize: 34,
                       fontWeight: 400,
-                      color: '#FFFFFF',
+                      color: isLight ? HI_BRAND.navy : '#FFFFFF',
                       margin: '0 0 10px',
                       lineHeight: 1.12,
                       letterSpacing: '-0.015em',
@@ -1432,7 +1460,7 @@ function StandardBlade_MasterDetailMint() {
                       fontFamily: 'Manrope, sans-serif',
                       fontSize: 19,
                       lineHeight: 1.45,
-                      color: 'rgba(255, 255, 255, 0.88)',
+                      color: isLight ? HI_BRAND.gray[600] : 'rgba(255, 255, 255, 0.88)',
                       margin: 0,
                       textWrap: 'pretty',
                       fontWeight: 400
@@ -1441,22 +1469,24 @@ function StandardBlade_MasterDetailMint() {
                     {renderSummary(
                       SUMMARY_OVERRIDES[currentItem.id] ?? currentItem.summary,
                       SUMMARY_EMPHASIS[currentItem.id],
-                      true
+                      !isLight
                     )}
                   </p>
             </div>
 
             {/* Detail — intro, bullets; photo bottom-locked */}
             <div
+              className={isLight ? 'hi-standard-blade__detail-body' : undefined}
               style={{
                 marginTop: 13,
                 paddingTop: 9,
-                borderTop: '1px solid rgba(143, 213, 209, 0.28)',
+                borderTop: isLight ? `1px solid ${HI_BRAND.gray[100]}` : '1px solid rgba(143, 213, 209, 0.28)',
                 display: 'flex',
                 flexDirection: 'column',
                 gap: CONTENT_PHOTO_GAP,
                 flex: 1,
-                minHeight: 0
+                minHeight: 0,
+                ...(isLight ? { overflow: 'hidden', borderRadius: 6 } : {})
               }}>
 
               <div
@@ -1477,7 +1507,7 @@ function StandardBlade_MasterDetailMint() {
                           fontFamily: 'Manrope, sans-serif',
                           fontSize: 17,
                           lineHeight: 1.32,
-                          color: 'rgba(255, 255, 255, 0.92)',
+                          color: isLight ? HI_BRAND.navy : 'rgba(255, 255, 255, 0.92)',
                           fontWeight: 800,
                           margin: '12px 0 8px',
                           textWrap: 'pretty'
@@ -1501,7 +1531,7 @@ function StandardBlade_MasterDetailMint() {
                         <span
                           aria-hidden
                           style={{
-                            color: HI_BRAND.tealAccent,
+                            color: isLight ? HI_BRAND.tealText : HI_BRAND.tealAccent,
                             fontSize: 18,
                             lineHeight: 1.35,
                             fontWeight: 700
@@ -1514,7 +1544,7 @@ function StandardBlade_MasterDetailMint() {
                             fontFamily: 'Manrope, sans-serif',
                             fontSize: 16,
                             lineHeight: 1.35,
-                            color: 'rgba(255, 255, 255, 0.9)'
+                            color: isLight ? HI_BRAND.gray[700] : 'rgba(255, 255, 255, 0.9)'
                           }}>
 
                           {b}
@@ -1531,10 +1561,10 @@ function StandardBlade_MasterDetailMint() {
                   marginTop: 'auto',
                   flexShrink: 0,
                   borderRadius: PHOTO_RADIUS,
-                  border: 'none',
-                  background: 'rgba(255, 255, 255, 0.05)',
+                  border: isLight ? `1px solid ${HI_BRAND.gray[100]}` : 'none',
+                  background: isLight ? HI_BRAND.gray[50] : 'rgba(255, 255, 255, 0.05)',
                   boxSizing: 'border-box',
-                  boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.06)'
+                  boxShadow: isLight ? 'inset 0 1px 0 rgba(2, 42, 77, 0.04)' : 'inset 0 1px 0 rgba(255, 255, 255, 0.06)'
                 }}>
 
                 <div
@@ -1545,18 +1575,18 @@ function StandardBlade_MasterDetailMint() {
                     height: getPhotoHeight(currentItem.id),
                     borderRadius: PHOTO_RADIUS - 4,
                     overflow: 'hidden',
-                    background: PHOTO_IMAGES[currentItem.id] ?
-                      'rgba(2, 42, 77, 0.35)' :
-                      'linear-gradient(145deg, rgba(143, 213, 209, 0.22) 0%, rgba(74, 118, 164, 0.32) 52%, rgba(2, 42, 77, 0.42) 100%)',
+                    background: photoImages[currentItem.id] ?
+                      (isLight ? HI_BRAND.gray[100] : 'rgba(2, 42, 77, 0.35)') :
+                      photoPlaceholderGradient,
                     border: 'none',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center'
                   }}>
 
-                  {PHOTO_IMAGES[currentItem.id] ?
+                  {photoImages[currentItem.id] ?
                     <img
-                      src={PHOTO_IMAGES[currentItem.id]}
+                      src={photoImages[currentItem.id]}
                       alt=""
                       style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                     /> :
@@ -1568,7 +1598,7 @@ function StandardBlade_MasterDetailMint() {
                         fontWeight: 600,
                         letterSpacing: '0.14em',
                         textTransform: 'uppercase',
-                        color: 'rgba(255, 255, 255, 0.38)'
+                        color: isLight ? HI_BRAND.gray[400] : 'rgba(255, 255, 255, 0.38)'
                       }}>
 
                       Photo

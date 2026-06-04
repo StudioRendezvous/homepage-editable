@@ -65,6 +65,7 @@ function HINav({
   homeHref = 'index.html',
   pricingHref = '#',
   activeNav = null,
+  onLogoClick = null,
 }) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [audience, setAudience] = React.useState(defaultAudience);
@@ -137,7 +138,23 @@ function HINav({
         gap: 0,
         boxShadow: transparent ? 'none' : '0 1px 4px rgba(2,42,77,0.06)',
       }}>
-        <a href={homeHref} style={{ marginRight: 40, flexShrink: 0, textDecoration: 'none', transform: 'translateY(-4px)' }}>
+        <a
+          href={homeHref}
+          title={onLogoClick ? 'Return to default homepage benchmarks' : undefined}
+          onClick={(e) => {
+            if (onLogoClick) {
+              e.preventDefault();
+              onLogoClick(e);
+            }
+          }}
+          style={{
+            marginRight: 40,
+            flexShrink: 0,
+            textDecoration: 'none',
+            transform: 'translateY(-4px)',
+            cursor: onLogoClick ? 'pointer' : undefined,
+          }}
+        >
           <HILogo height={24} />
         </a>
         <div style={{ display: 'flex', alignItems: 'center', gap: 4, flex: 1, minWidth: 0 }}>
@@ -332,7 +349,7 @@ function HIBetter401kCta({ variant } = {}) {
 }
 
 // ─── Footer ───────────────────────────────────────────────────────────────────
-function HIFooter({ homeHref = 'index.html', pricingHref = '#' } = {}) {
+function HIFooter({ homeHref = 'index.html', pricingHref = '#', onLogoClick } = {}) {
   const productLinks = [
     { label: '401(k) Plans', href: '#' },
     { label: 'Payroll Integrations', href: '#' },
@@ -355,7 +372,21 @@ function HIFooter({ homeHref = 'index.html', pricingHref = '#' } = {}) {
     }}>
       <div style={{ display: 'flex', alignItems: 'flex-start', gap: 70, maxWidth: 1120, margin: '0 auto 36px' }}>
         <div style={{ flexShrink: 0, maxWidth: 220, marginLeft: -20 }}>
-          <a href={homeHref} style={{ textDecoration: 'none', display: 'inline-block' }}>
+          <a
+            href={homeHref}
+            title={onLogoClick ? 'Toggle light homepage variation' : undefined}
+            onClick={(e) => {
+              if (onLogoClick) {
+                e.preventDefault();
+                onLogoClick(e);
+              }
+            }}
+            style={{
+              textDecoration: 'none',
+              display: 'inline-block',
+              cursor: onLogoClick ? 'pointer' : undefined,
+            }}
+          >
             <HILogo color="#fff" height={22} />
           </a>
           <p style={{ fontSize: 13, color: HI_BRAND.gray[300], marginTop: 12, lineHeight: 1.65 }}>

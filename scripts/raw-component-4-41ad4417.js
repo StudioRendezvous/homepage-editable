@@ -9,9 +9,64 @@
 //   6. "Common questions" FAQ + "A better 401(k) starts here" CTA from Direction A
 //      (with `>` after "See all FAQs", no underline)
 
+const HI_HOME_VARIANT_KEY = 'hiHomeVariant';
+
+function readHomeVariant() {
+  if (typeof window === 'undefined') return 'default';
+  if (window.location.hash === '#light') return 'light';
+  try {
+    return sessionStorage.getItem(HI_HOME_VARIANT_KEY) === 'light' ? 'light' : 'default';
+  } catch {
+    return 'default';
+  }
+}
+
 function CombinedLandingPage() {
   const [openFaq, setOpenFaq] = React.useState(null);
   const [testimonialIdx, setTestimonialIdx] = React.useState(0);
+  const [homeVariant, setHomeVariant] = React.useState(readHomeVariant);
+  const isLightHome = homeVariant === 'light';
+
+  React.useEffect(() => {
+    const syncFromUrl = () => setHomeVariant(readHomeVariant());
+    window.addEventListener('hashchange', syncFromUrl);
+    return () => window.removeEventListener('hashchange', syncFromUrl);
+  }, []);
+
+  const clearHomeVariant = React.useCallback(() => {
+    try {
+      sessionStorage.removeItem(HI_HOME_VARIANT_KEY);
+    } catch {
+      /* ignore private mode */
+    }
+    if (window.location.hash === '#light') {
+      const base = window.location.pathname + window.location.search;
+      window.history.replaceState(null, '', base || 'index.html');
+    }
+    setHomeVariant('default');
+  }, []);
+
+  const toggleHomeVariant = React.useCallback(() => {
+    const next = isLightHome ? 'default' : 'light';
+    try {
+      if (next === 'light') sessionStorage.setItem(HI_HOME_VARIANT_KEY, 'light');
+      else sessionStorage.removeItem(HI_HOME_VARIANT_KEY);
+    } catch {
+      /* ignore private mode */
+    }
+    if (next === 'light') {
+      if (window.location.hash !== '#light') window.location.hash = 'light';
+    } else if (window.location.hash === '#light') {
+      const base = window.location.pathname + window.location.search;
+      window.history.replaceState(null, '', base || 'index.html');
+    }
+    setHomeVariant(next);
+    if (next === 'light') {
+      requestAnimationFrame(() => {
+        document.getElementById('standard')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
+  }, [isLightHome]);
   const isGitHubPages = /\.github\.io$/i.test(window.location.hostname);
   const isSafari = (() => {
     const ua = navigator.userAgent;
@@ -63,7 +118,7 @@ function CombinedLandingPage() {
       {/* Nav + hero share a full-bleed backdrop so the yellow glow is not clipped */}
       <div className="hi-header-shell">
         <div className="hi-header-shell__content">
-          <HINav showEyebrow={false} employeeStyle="none" variant="B" audienceToggle={true} defaultAudience="employers" transparent={true} homeHref="index.html" pricingHref="pricing.html" />
+          <HINav showEyebrow={false} employeeStyle="none" variant="B" audienceToggle={true} defaultAudience="employers" transparent={true} homeHref="index.html" pricingHref="pricing.html" onLogoClick={clearHomeVariant} />
 
       <section style={{
         position: 'relative',
@@ -189,8 +244,11 @@ function CombinedLandingPage() {
       {/* ═══════════════════════════════════════════════════════════
           2 · 6 BENCHMARKS — Variant 2 (Navy canvas, warm off-white tiles)
           ═══════════════════════════════════════════════════════════ */}
-      <div id="standard" className="hi-benchmarks-shell">
-        <StandardBlade_MasterDetailMint />
+      <div
+        id="standard"
+        className={'hi-benchmarks-shell' + (isLightHome ? ' hi-benchmarks-shell--light' : '')}
+      >
+        <StandardBlade_MasterDetailMint variant={isLightHome ? 'light' : 'default'} />
         {/* Layout options: StandardBlade_TileGridMint (2×3 accordion) · StandardBlade_MasterDetailMint (left rail) */}
       </div>
 
@@ -528,7 +586,11 @@ function CombinedLandingPage() {
 
       <HIBetter401kCta />
 
-      <HIFooter homeHref="index.html" pricingHref="pricing.html" />
+      <HIFooter
+        homeHref="index.html"
+        pricingHref="pricing.html"
+        onLogoClick={toggleHomeVariant}
+      />
     </div>
   );
 }
