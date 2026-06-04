@@ -48,7 +48,7 @@ function CombinedLandingPage() {
       {/* Nav + hero share a full-bleed backdrop so the yellow glow is not clipped */}
       <div className="hi-header-shell">
         <div className="hi-header-shell__content">
-          <HINav showEyebrow={false} employeeStyle="none" variant="B" audienceToggle={true} defaultAudience="employers" transparent={true} homeHref="index.html" pricingHref="pricing.html" />
+          <HINav showEyebrow={false} employeeStyle="none" variant="B" audienceToggle={true} defaultAudience="employers" transparent={true} homeHref="index.html" pricingHref="#" />
 
       <section style={{
         position: 'relative',
@@ -127,15 +127,17 @@ function CombinedLandingPage() {
           {/* Right: badge wall */}
           <div style={{ flexShrink: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-end', gap: 16, width: 'min(380px, 100%)', maxWidth: '100%' }}>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, width: '100%' }}>
-              <video
-                src={window.__resources.awardsImg}
-                autoPlay
-                loop
-                muted
-                playsInline
-                aria-label="Awards"
-                style={{ width: '100%', maxWidth: 360, height: 'auto', opacity: 0.95, display: 'block', objectFit: 'contain' }}
-              />
+              <div className="hi-hero-awards-media">
+                <video
+                  className="hi-hero-awards-video"
+                  src={window.__resources.awardsImg}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  aria-label="Awards"
+                />
+              </div>
               <p style={{
                 fontFamily: 'Lora, Georgia, serif',
                 fontSize: 16,
@@ -578,7 +580,7 @@ function CombinedLandingPage() {
         </div>
       </section>
 
-      <HIFooter homeHref="index.html" pricingHref="pricing.html" />
+      <HIFooter homeHref="index.html" pricingHref="#" />
     </div>
   );
 }

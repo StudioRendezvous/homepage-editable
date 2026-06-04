@@ -21,6 +21,11 @@ cd "/Users/shanefrench/Projects/Human Interest - Cursor/homepage-editable"
 
 React and Babel are vendored in `vendor/` (no CDN). **Sharing with teammates:** see [SHARING.md](./SHARING.md) and run `./package-share.sh`.
 
+## GitHub Pages deploy
+
+The public [GitHub Pages](https://studiorendezvous.github.io/homepage-editable/) preview ships the homepage only. The standalone pricing route (`pricing.html`) is for **local preview** and is not linked from the public deploy.
+
+
 ## Where to edit (for creative direction)
 
 | File | What it controls |

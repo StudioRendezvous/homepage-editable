@@ -80,7 +80,8 @@ Public preview hosted from [StudioRendezvous/homepage-editable](https://github.c
 | Page | URL |
 |------|-----|
 | **Homepage** | https://studiorendezvous.github.io/homepage-editable/ |
-| **Pricing** | https://studiorendezvous.github.io/homepage-editable/pricing.html |
+
+**Note:** The pricing page is **not** published on GitHub Pages yet (nav/footer links are disabled there). Local zip preview still includes `pricing.html` at http://localhost:8081/pricing.html if you keep that file in your copy.
 
 ---
 

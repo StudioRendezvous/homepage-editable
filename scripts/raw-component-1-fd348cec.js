@@ -63,7 +63,7 @@ function HINav({
   defaultAudience = 'employees',
   transparent = false,
   homeHref = 'index.html',
-  pricingHref = 'pricing.html',
+  pricingHref = '#',
   activeNav = null,
 }) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -250,10 +250,9 @@ function HINav({
 }
 
 // ─── Footer ───────────────────────────────────────────────────────────────────
-function HIFooter({ homeHref = 'index.html', pricingHref = 'pricing.html' } = {}) {
+function HIFooter({ homeHref = 'index.html', pricingHref = '#' } = {}) {
   const productLinks = [
     { label: '401(k) Plans', href: '#' },
-    { label: 'Pricing', href: pricingHref },
     { label: 'Payroll Integrations', href: '#' },
     { label: 'Compliance', href: '#' },
     { label: 'Employee Experience', href: '#' },
