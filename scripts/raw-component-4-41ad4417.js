@@ -129,7 +129,7 @@ function CombinedLandingPage() {
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, width: '100%' }}>
               <div
                 className="hi-hero-awards-stage"
-                style={{ width: '100%', maxWidth: 360, background: '#fff' }}
+                style={{ width: '100%', maxWidth: 360 }}
               >
                 <div className="hi-hero-awards-media" style={{ width: '100%', maxWidth: 360 }}>
                   <video
@@ -140,7 +140,7 @@ function CombinedLandingPage() {
                     muted
                     playsInline
                     aria-label="Awards"
-                    style={{ display: 'block', width: '100%', maxWidth: 360, height: 'auto', objectFit: 'contain', background: '#fff' }}
+                    style={{ display: 'block', width: '100%', maxWidth: 360, height: 'auto', objectFit: 'contain' }}
                   />
                 </div>
               </div>

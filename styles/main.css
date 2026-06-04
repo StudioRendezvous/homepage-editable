@@ -182,17 +182,18 @@ button { font-family: inherit; }
   z-index: 1;
 }
 
-/* Hero awards WebM (VP9 alpha) — white matte only; sizing duplicated inline for cache-safe deploy */
+/* Hero awards WebM (VP9 alpha) — transparent matte; gradient from .hi-header-shell */
 .hi-hero-awards-stage {
   position: relative;
   width: 100%;
   max-width: 360px;
-  background: #fff;
+  background: transparent;
 }
 
 .hi-hero-awards-media {
   width: 100%;
   max-width: 360px;
+  background: transparent;
 }
 
 .hi-hero-awards-video {
@@ -201,7 +202,8 @@ button { font-family: inherit; }
   max-width: 360px;
   height: auto;
   object-fit: contain;
-  background: #fff;
+  background: transparent;
+  background-color: transparent;
   vertical-align: top;
 }
 
