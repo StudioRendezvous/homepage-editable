@@ -249,6 +249,9 @@ function HINav({
   );
 }
 
+// Pricing only: full-height light gray → white (matches comparison section gray[50])
+const HI_BETTER401K_CTA_PRICING_BG = `linear-gradient(180deg, ${HI_BRAND.gray[50]} 0%, ${HI_BRAND.white} 100%)`;
+
 // ─── "A better 401(k) starts here" final CTA (homepage + pricing) ───────────────
 function HIBetter401kCta({ variant } = {}) {
   const isPricing = variant === 'pricing';
@@ -258,9 +261,7 @@ function HIBetter401kCta({ variant } = {}) {
       style={{
       position: 'relative',
       overflow: 'hidden',
-      background: isPricing
-        ? `linear-gradient(135deg, ${HI_BRAND.gray[50]} 0%, ${HI_BRAND.white} 90px), ${HI_BRAND.white}`
-        : '#fff',
+      background: isPricing ? HI_BETTER401K_CTA_PRICING_BG : HI_BRAND.white,
       padding: '32px clamp(24px, 5vw, 80px) 64px',
       textAlign: 'center',
     }}>
