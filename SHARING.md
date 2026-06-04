@@ -73,14 +73,24 @@ A single merged HTML file is **not** practical without a large refactor (many sc
 
 ---
 
-## Optional: shareable URL (no zip for viewers)
+## GitHub Pages (team link — no zip)
 
-Upload the **unzipped folder** to a static host. Teammates only open a link.
+Public preview hosted from [StudioRendezvous/homepage-editable](https://github.com/StudioRendezvous/homepage-editable). The site may take 1–2 minutes to build after a push.
+
+| Page | URL |
+|------|-----|
+| **Homepage** | https://studiorendezvous.github.io/homepage-editable/ |
+| **Pricing** | https://studiorendezvous.github.io/homepage-editable/pricing.html |
+
+---
+
+## Optional: other shareable URLs (no zip for viewers)
+
+Upload the **unzipped folder** to another static host if needed.
 
 | Service | Steps |
 |---------|--------|
 | **[Netlify Drop](https://app.netlify.com/drop)** | Drag the `homepage-editable` folder onto the page → copy the URL → share. Free, no account required for a quick drop. |
-| **GitHub Pages** | Push the folder to a repo → Settings → Pages → deploy from branch → share `https://<user>.github.io/<repo>/`. |
 | **Cloudflare Pages / Vercel** | Connect repo or upload folder; same idea as Netlify. |
 
 Homepage: `https://your-site/`  
