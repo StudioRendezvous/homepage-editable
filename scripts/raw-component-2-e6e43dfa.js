@@ -1153,7 +1153,9 @@ function StandardBlade_MasterDetailMint() {
   const PHOTO_HEIGHT_OTHER = 212;
   const getPhotoHeight = (id) => id === 'administration' ? PHOTO_HEIGHT_ADMIN : PHOTO_HEIGHT_OTHER;
   const CONTENT_PHOTO_GAP = 16;
-  const PHOTO_IMAGES = {};
+  const PHOTO_IMAGES = {
+    administration: 'assets/images/image_test_01.png'
+  };
 
   const layoutRef = React.useRef(null);
   const tabRefs = React.useRef([]);
