@@ -612,6 +612,28 @@ button { font-family: inherit; }
   background-color: var(--hi-gray-50);
 }
 
+/* Stack tab panels in one grid cell — max intrinsic height wins, no stretch / layout shift */
+.hi-pricing-comparison-panel-stack {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.hi-pricing-comparison-panel-stack > .hi-pricing-comparison-panel {
+  grid-area: 1 / 1;
+  align-self: start;
+  width: 100%;
+  min-width: 0;
+}
+
+.hi-pricing-comparison-panel-stack > .hi-pricing-comparison-panel--active {
+  z-index: 1;
+}
+
+.hi-pricing-comparison-panel-stack > .hi-pricing-comparison-panel:not(.hi-pricing-comparison-panel--active) {
+  visibility: hidden;
+  pointer-events: none;
+}
+
 /* Two-column copy + comparison table (inline grid in raw-component-5-pricing.js) */
 .hi-pricing-comparison-panel {
   display: grid;

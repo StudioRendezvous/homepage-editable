@@ -378,9 +378,127 @@ function PricingTierCard({ tier }) {
   );
 }
 
+function PricingComparisonPanel({ tab, active }) {
+  const panelClass = [
+    'hi-pricing-comparison-panel',
+    active ? 'hi-pricing-comparison-panel--active' : '',
+  ].filter(Boolean).join(' ');
+
+  return (
+    <div
+      className={panelClass}
+      role="tabpanel"
+      aria-hidden={!active}
+      style={{
+        padding: 'clamp(28px, 4vw, 48px) clamp(24px, 4vw, 56px)',
+      }}
+    >
+      <div>
+        <h3 style={{
+          fontFamily: 'Lora, Georgia, serif',
+          fontSize: 'clamp(24px, 2.5vw, 32px)',
+          fontWeight: 400,
+          color: HI_BRAND.navy,
+          lineHeight: 1.25,
+          letterSpacing: '-0.01em',
+          margin: '0 0 24px',
+        }}>
+          {tab.headline}
+        </h3>
+        {tab.body.map((para, i) => (
+          <p key={i} style={{
+            fontSize: 15,
+            color: HI_BRAND.gray[600],
+            lineHeight: 1.65,
+            margin: i === 0 ? '0 0 16px' : '0 0 0',
+          }}>
+            {para}
+          </p>
+        ))}
+      </div>
+
+      <div style={{ overflowX: 'auto' }}>
+        <div
+          className="hi-pricing-comparison-table"
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1.35fr 1fr 1fr',
+            gap: 0,
+            minWidth: 400,
+          }}
+        >
+          <div />
+          <div style={{
+            textAlign: 'center',
+            fontSize: 11,
+            fontWeight: 700,
+            letterSpacing: '0.12em',
+            color: HI_BRAND.white,
+            padding: '11px 16px',
+            background: HI_BRAND.navy,
+          }}>
+            HUMAN INTEREST
+          </div>
+          <div style={{
+            textAlign: 'center',
+            fontSize: 11,
+            fontWeight: 700,
+            letterSpacing: '0.12em',
+            color: HI_BRAND.gray[600],
+            padding: '11px 16px',
+            background: HI_BRAND.gray[100],
+            borderBottom: `1px solid ${HI_BRAND.gray[100]}`,
+          }}>
+            OTHER PROVIDERS
+          </div>
+
+          {tab.rows.map((row, ri) => (
+            <React.Fragment key={row.feature}>
+              <div style={{
+                padding: '12px 12px 12px 16px',
+                borderTop: ri > 0 ? `1px solid ${HI_BRAND.gray[100]}` : 'none',
+                background: HI_BRAND.white,
+              }}>
+                <span style={{ fontSize: 14, fontWeight: 600, color: HI_BRAND.navy }}>{row.feature}</span>
+                {row.learnMore && (
+                  <a href="#" className="hi-btn hi-btn--link" style={{
+                    display: 'block',
+                    fontSize: 12,
+                    fontWeight: 600,
+                    color: HI_BRAND.tealText,
+                    textDecoration: 'none',
+                    marginTop: 4,
+                  }}>
+                    Learn more →
+                  </a>
+                )}
+              </div>
+              <div style={{
+                padding: '12px',
+                borderTop: ri > 0 ? '1px solid rgba(255, 255, 255, 0.12)' : 'none',
+                background: '#0F3F63',
+                textAlign: 'center',
+              }}>
+                <span style={{ fontSize: 14, fontWeight: 700, color: HI_BRAND.white, lineHeight: 1.45 }}>{row.hi}</span>
+              </div>
+              <div style={{
+                padding: '12px',
+                borderTop: ri > 0 ? `1px solid ${HI_BRAND.gray[100]}` : 'none',
+                background: HI_BRAND.gray[50],
+                textAlign: 'center',
+              }}>
+                <span style={{ fontSize: 14, color: HI_BRAND.gray[600], lineHeight: 1.45 }}>{row.other}</span>
+              </div>
+            </React.Fragment>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function PricingComparisonTabs() {
   const [activeIdx, setActiveIdx] = React.useState(0);
-  const tab = PRICING_PAGE.comparisonTabs[activeIdx];
 
   return (
     <section
@@ -470,116 +588,14 @@ function PricingComparisonTabs() {
             </nav>
           </div>
 
-          <div
-            className="hi-pricing-comparison-panel"
-            style={{
-              padding: 'clamp(28px, 4vw, 48px) clamp(24px, 4vw, 56px)',
-              display: 'grid',
-              gridTemplateColumns: 'minmax(200px, 0.9fr) minmax(300px, 1.25fr)',
-              gap: 'clamp(24px, 3.5vw, 44px)',
-              alignItems: 'start',
-            }}
-          >
-              <div>
-                <h3 style={{
-                  fontFamily: 'Lora, Georgia, serif',
-                  fontSize: 'clamp(24px, 2.5vw, 32px)',
-                  fontWeight: 400,
-                  color: HI_BRAND.navy,
-                  lineHeight: 1.25,
-                  letterSpacing: '-0.01em',
-                  margin: '0 0 24px',
-                }}>
-                  {tab.headline}
-                </h3>
-                {tab.body.map((para, i) => (
-                  <p key={i} style={{
-                    fontSize: 15,
-                    color: HI_BRAND.gray[600],
-                    lineHeight: 1.65,
-                    margin: i === 0 ? '0 0 16px' : '0 0 0',
-                  }}>
-                    {para}
-                  </p>
-                ))}
-              </div>
-
-              <div style={{ overflowX: 'auto' }}>
-                <div
-                  className="hi-pricing-comparison-table"
-                  style={{
-                    display: 'grid',
-                    gridTemplateColumns: '1.35fr 1fr 1fr',
-                    gap: 0,
-                    minWidth: 400,
-                  }}
-                >
-                  <div />
-                  <div style={{
-                    textAlign: 'center',
-                    fontSize: 11,
-                    fontWeight: 700,
-                    letterSpacing: '0.12em',
-                    color: HI_BRAND.white,
-                    padding: '11px 16px',
-                    background: HI_BRAND.navy,
-                  }}>
-                    HUMAN INTEREST
-                  </div>
-                  <div style={{
-                    textAlign: 'center',
-                    fontSize: 11,
-                    fontWeight: 700,
-                    letterSpacing: '0.12em',
-                    color: HI_BRAND.gray[600],
-                    padding: '11px 16px',
-                    background: HI_BRAND.gray[100],
-                    borderBottom: `1px solid ${HI_BRAND.gray[100]}`,
-                  }}>
-                    OTHER PROVIDERS
-                  </div>
-
-                  {tab.rows.map((row, ri) => (
-                    <React.Fragment key={row.feature}>
-                      <div style={{
-                        padding: '12px 12px 12px 16px',
-                        borderTop: ri > 0 ? `1px solid ${HI_BRAND.gray[100]}` : 'none',
-                        background: HI_BRAND.white,
-                      }}>
-                        <span style={{ fontSize: 14, fontWeight: 600, color: HI_BRAND.navy }}>{row.feature}</span>
-                        {row.learnMore && (
-                          <a href="#" className="hi-btn hi-btn--link" style={{
-                            display: 'block',
-                            fontSize: 12,
-                            fontWeight: 600,
-                            color: HI_BRAND.tealText,
-                            textDecoration: 'none',
-                            marginTop: 4,
-                          }}>
-                            Learn more →
-                          </a>
-                        )}
-                      </div>
-                      <div style={{
-                        padding: '12px',
-                        borderTop: ri > 0 ? '1px solid rgba(255, 255, 255, 0.12)' : 'none',
-                        background: '#0F3F63',
-                        textAlign: 'center',
-                      }}>
-                        <span style={{ fontSize: 14, fontWeight: 700, color: HI_BRAND.white, lineHeight: 1.45 }}>{row.hi}</span>
-                      </div>
-                      <div style={{
-                        padding: '12px',
-                        borderTop: ri > 0 ? `1px solid ${HI_BRAND.gray[100]}` : 'none',
-                        background: HI_BRAND.gray[50],
-                        textAlign: 'center',
-                      }}>
-                        <span style={{ fontSize: 14, color: HI_BRAND.gray[600], lineHeight: 1.45 }}>{row.other}</span>
-                      </div>
-                    </React.Fragment>
-                  ))}
-                </div>
-              </div>
+          <div className="hi-pricing-comparison-panel-stack">
+            {PRICING_PAGE.comparisonTabs.map((t, i) => (
+              <PricingComparisonPanel
+                key={t.id}
+                tab={t}
+                active={i === activeIdx}
+              />
+            ))}
           </div>
         </div>
       </div>
