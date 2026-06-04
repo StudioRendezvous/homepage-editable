@@ -251,7 +251,6 @@ button { font-family: inherit; }
 .hi-standard-blade--light .hi-standard-blade__detail-panel {
   position: relative;
   overflow: visible;
-  background-clip: padding-box;
 }
 
 .hi-standard-blade--light .hi-standard-blade__detail-panel::after {

@@ -1158,14 +1158,16 @@ function StandardBlade_MasterDetailMint({ variant = 'default' } = {}) {
   const PHOTO_IMAGES = {
     administration: 'assets/images/image_test_01.png?v=1',
     compliance: 'assets/images/image_test_02.png?v=9',
-    service: 'assets/images/image_test_03.png?v=3',
-    investments: 'assets/images/image_test_04.png'
+    service: 'assets/images/image_test_03_dark_new.png?v=5',
+    investments: 'assets/images/image_test_04.png',
+    'employee-savings': 'assets/images/image_test_03.png?v=3'
   };
   const PHOTO_IMAGES_LIGHT = {
-    ...PHOTO_IMAGES,
     administration: 'assets/images/image_test_01.png?v=1',
     compliance: 'assets/images/image_test_02_light.png?v=1',
-    service: 'assets/images/image_test_03_light.png?v=3'
+    service: 'assets/images/image_test_03_light.png?v=5',
+    investments: 'assets/images/image_test_04.png',
+    'employee-savings': 'assets/images/image_test_03_light.png?v=3'
   };
   const photoImages = isLight ? PHOTO_IMAGES_LIGHT : PHOTO_IMAGES;
 
@@ -1268,9 +1270,9 @@ function StandardBlade_MasterDetailMint({ variant = 'default' } = {}) {
 
   const detailPanelStyle = isLight ? {
     background: '#FFFFFF',
-    /* Teal stroke rendered in CSS (::after) so it stays visible over photo corners */
-    border: '2px solid transparent',
-    boxShadow: '0 0 0 1px rgba(20, 181, 171, 0.32), 0 12px 36px rgba(20, 181, 171, 0.14), 0 28px 56px rgba(2, 42, 77, 0.12)',
+    /* Teal stroke: main.css ::after overlay (not border/box-shadow — avoids white halo) */
+    border: 'none',
+    boxShadow: '0 12px 36px rgba(20, 181, 171, 0.14), 0 28px 56px rgba(2, 42, 77, 0.12)',
     color: HI_BRAND.navy,
   } : {
     background: 'rgba(255, 255, 255, 0.07)',
