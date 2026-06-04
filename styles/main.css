@@ -196,6 +196,11 @@ button { font-family: inherit; }
   background: transparent;
 }
 
+/* Blend stacking context for Safari + GitHub Pages screen matte fix */
+.hi-hero-awards-media--blend {
+  isolation: isolate;
+}
+
 .hi-hero-awards-video {
   display: block;
   width: 100%;
@@ -208,9 +213,18 @@ button { font-family: inherit; }
   vertical-align: top;
 }
 
-/* GitHub Pages: Chromium often paints VP9 alpha as black; screen knocks out the matte */
+/* VP9 alpha matte renders black in Safari and Chromium on github.io — screen removes it */
+.hi-hero-awards-video--screen-blend {
+  mix-blend-mode: screen;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+/* Legacy class from e2f08c2 — keep for cached HTML/JS; same rules as --screen-blend */
 .hi-hero-awards-video--gh-pages {
   mix-blend-mode: screen;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 /* Wide benchmarks layout scrolls inside its lane — does not widen the page */

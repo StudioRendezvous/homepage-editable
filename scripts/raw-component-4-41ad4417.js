@@ -13,6 +13,11 @@ function CombinedLandingPage() {
   const [openFaq, setOpenFaq] = React.useState(null);
   const [testimonialIdx, setTestimonialIdx] = React.useState(0);
   const isGitHubPages = /\.github\.io$/i.test(window.location.hostname);
+  const isSafari = (() => {
+    const ua = navigator.userAgent;
+    return /Safari/i.test(ua) && !/Chrome|Chromium|CriOS|Edg|OPR|FxiOS/i.test(ua);
+  })();
+  const needsScreenBlend = isGitHubPages || isSafari;
 
   // ─── Data ──────────────────────────────────────────────────────────────────
   const testimonials = [
@@ -132,9 +137,9 @@ function CombinedLandingPage() {
                 className="hi-hero-awards-stage"
                 style={{ width: '100%', maxWidth: 360 }}
               >
-                <div className="hi-hero-awards-media" style={{ width: '100%', maxWidth: 360 }}>
+                <div className={'hi-hero-awards-media' + (needsScreenBlend ? ' hi-hero-awards-media--blend' : '')} style={{ width: '100%', maxWidth: 360 }}>
                   <video
-                    className={'hi-hero-awards-video' + (isGitHubPages ? ' hi-hero-awards-video--gh-pages' : '')}
+                    className={'hi-hero-awards-video' + (needsScreenBlend ? ' hi-hero-awards-video--screen-blend' : '')}
                     src={window.__resources.awardsImg}
                     autoPlay
                     loop
